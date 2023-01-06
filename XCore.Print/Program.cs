@@ -1,4 +1,8 @@
 ﻿using System;
+using XCore.Print.YZK.依赖注入;
+using XCore.Print.YZK.日志系统;
+using XCore.Print.YZK.配置系统.读取命令行配置;
+using XCore.Print.YZK.配置系统.读取环境变量;
 
 namespace XCore.Print
 {
@@ -6,7 +10,11 @@ namespace XCore.Print
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // XCore.Print.YZK.配置系统.读取出对象.InjectConfig.ReadConfig();
+            // CommandConfig.MainFunc(args);
+            // EnvironmentConfig.MainFunc();
+            BasicLogger.MainFunc();
+            Console.ReadKey();
         }
     }
 }
