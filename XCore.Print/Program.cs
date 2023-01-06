@@ -13,7 +13,8 @@ namespace XCore.Print
             // XCore.Print.YZK.配置系统.读取出对象.InjectConfig.ReadConfig();
             // CommandConfig.MainFunc(args);
             // EnvironmentConfig.MainFunc();
-            BasicLogger.MainFunc();
+            // BasicLogger.MainFunc();
+            Log4NetDemo.MainFunc02();
             Console.ReadKey();
         }
     }
