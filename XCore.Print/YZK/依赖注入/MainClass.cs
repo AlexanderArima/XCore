@@ -9,8 +9,8 @@ namespace XCore.Print.YZK.依赖注入
     {
         public static void MainFun()
         {
-            ServiceCollection services = new ServiceCollection();
-            services.AddTransient<TestServiceImpl>();
+            ServiceCollection services = new ServiceCollection();   // ServiceCollection是注册容器的地址
+            services.AddTransient<TestServiceImpl>();   // 想要设置一个【瞬态】的服务
             using (ServiceProvider provider = services.BuildServiceProvider())
             {
                 var testService = provider.GetRequiredService<TestServiceImpl>();

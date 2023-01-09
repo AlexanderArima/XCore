@@ -8,6 +8,8 @@
   <ItemGroup>
     <PackageReference Include="AspectCore.Extensions.DependencyInjection" Version="1.2.0" />
     <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="Dapper.Contrib" Version="1.50.5" />
+    <PackageReference Include="Dapper.SqlBuilder" Version="1.50.5" />
     <PackageReference Include="log4net" Version="2.0.15" />
     <PackageReference Include="MarkCBB.Extensions.Caching.MongoDB" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />

@@ -28,8 +28,8 @@ namespace XCore.Print.YZK.日志系统
         {
             ILoggerRepository repository = LogManager.CreateRepository("MyRepository"); // 创建一个日志仓库
             XmlConfigurator.Configure(repository, new FileInfo("YZK/日志系统/config.xml")); // 注册，读取配置文件
-            ILog log = LogManager.GetLogger(repository.Name, "MyLog");
-            log.Info("普通信息");
+            ILog log = LogManager.GetLogger(repository.Name, "MyLog");  // 获得服务
+            log.Info("普通信息");   // 输出日志
             log.Warn("警告信息");
             log.Error("错误信息");
             Console.WriteLine("输入日志完毕");
