@@ -1,0 +1,8 @@
+﻿
+@model XCore.Web.Models.Person
+@*@model MVCApp1.Models.Person表明这个视图文件是接收Person类数据的强类型视图。
+    控制器传递过来的对象在cshtml视图中可以用Model属性来获取。*@
+<div>姓名：@Model.Name</div>
+<div>年龄：@Model.Age</div>
+<div>性别(Sex)：@(Model.Sex == 1? "男" : "女")</div>
+<div>职业：@Model.Job</div>
