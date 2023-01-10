@@ -7,7 +7,7 @@ namespace XCore.WebAPI.Model
 {
     public class ReceiveInfo
     {
-        public ReceiveInfo(int code,string msg,object data)
+        public ReceiveInfo(int code,string msg, string data)
         {
             this.code = code;
             this.msg = msg;
@@ -18,6 +18,6 @@ namespace XCore.WebAPI.Model
 
         public string msg { get; set; }
 
-        public object data { get; set; }
+        public string data { get; set; }
     }
 }

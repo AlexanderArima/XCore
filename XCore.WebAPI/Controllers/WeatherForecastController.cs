@@ -60,10 +60,26 @@ namespace XCore.WebAPI.Controllers
         }
 
         /// <summary>
+        /// 用异步的方式处理请求.
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult<ReceiveInfo>> BatchSave(string title, string content)
+        {
+            await Task.Delay(3000);
+            return await Task.Run<ReceiveInfo>(() =>
+            {
+                return new ReceiveInfo(1, "保存", null);
+            });
+        }
+
+        /// <summary>
         /// 获取天气的集合
         /// </summary>
-        /// <response code="201">返回value字符串</response>
-        /// <response code="400">如果id为空</response>  
+        /// <response code="201">返回value字符串，这个会显示在swagger上</response>
+        /// <response code="400">如果id为空，这个会显示在swagger上</response>  
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(201)]
@@ -75,10 +91,35 @@ namespace XCore.WebAPI.Controllers
                 case 0:
                     return BadRequest(new ErrorInfo(1, "请求参数是0"));
                 case 1:
-                    return new ReceiveInfo(0, "杨中科", 18);
+                    return new ReceiveInfo(0, "杨中科", "18");
                 default:
                     return NotFound(new ErrorInfo(1, "请求参数异常"));
             }
+        }
+
+        /// <summary>
+        /// 获取Route和QueryString的参数.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="birthday"></param>
+        /// <param name="idCard"></param>
+        /// <returns></returns>
+        [HttpGet("name={name}&csrq={birthday}&zjhm={idCard}")]
+        public ActionResult<ReceiveInfo> GetAll(string name, string birthday, string idCard)
+        {
+            return new ReceiveInfo(0, "张三", "20");
+        }
+
+        /// <summary>
+        /// 混合使用QueryString和请求报文
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("id={id}")]
+        public ActionResult<string> UpdateBatch(string id,[FromBody] Person model)
+        {
+            return "修改完成";
         }
     }
 }
