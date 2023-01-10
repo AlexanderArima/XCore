@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XCore.Print", "XCore.Print\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCore.Web", "XCore.Web\XCore.Web.csproj", "{BF666EEF-65A1-4319-89D0-83E4F71CB558}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCore.WebAPI", "XCore.WebAPI\XCore.WebAPI.csproj", "{4B3E3280-902F-4DE9-B6C7-CEF5D7286C65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BF666EEF-65A1-4319-89D0-83E4F71CB558}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF666EEF-65A1-4319-89D0-83E4F71CB558}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF666EEF-65A1-4319-89D0-83E4F71CB558}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B3E3280-902F-4DE9-B6C7-CEF5D7286C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B3E3280-902F-4DE9-B6C7-CEF5D7286C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B3E3280-902F-4DE9-B6C7-CEF5D7286C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B3E3280-902F-4DE9-B6C7-CEF5D7286C65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

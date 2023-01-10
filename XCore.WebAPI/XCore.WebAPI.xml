@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XCore.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:XCore.WebAPI.Controllers.WeatherForecastController.Get">
+            <summary>
+            获取天气的集合
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
