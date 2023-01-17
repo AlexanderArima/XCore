@@ -23,5 +23,12 @@ namespace XCore.WebAPI.Controllers
         {
             return myService.GetName();
         }
+
+        [HttpGet]
+        public ActionResult<string> Login([FromServices]LoginService loginService)
+        {
+            var result = loginService.Valid();
+            return result == true ? "验证通过" : "验证不通过";
+        }
     }
 }

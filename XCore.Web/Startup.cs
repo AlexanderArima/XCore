@@ -24,6 +24,9 @@ namespace XCore.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // 加载用户机密
+            var configServer = this.Configuration.GetConnectionString("configServer");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

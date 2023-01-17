@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
+using System.Diagnostics;
 
 namespace XCore.WebAPI
 {
@@ -29,6 +30,9 @@ namespace XCore.WebAPI
         {
             // 将项目中的控制器注册到容器中
             services.AddControllers();
+
+            // 加载用户机密
+            var configServer = this.Configuration.GetConnectionString("configServer");
 
             // 将Swagger相关的服务注册到容器中
             services.AddSwaggerGen(c =>
@@ -48,6 +52,7 @@ namespace XCore.WebAPI
 
             // 注册了一个自定义的服务
             services.AddScoped<MyService>();
+            services.AddScoped<LoginService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,18 +60,26 @@ namespace XCore.WebAPI
         {
             if (env.IsDevelopment())
             {
+                Debug.WriteLine("目前的环境是开发环境");
+
+                // 这个开发环境
                 app.UseDeveloperExceptionPage();
+
+                // 启用中间件服务生成Swagger作为JSON终结点
+                app.UseSwagger();
+
+                // 启用中间件服务对swagger - ui，指定Swagger JSON终结点
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                    c.RoutePrefix = string.Empty;
+                });
             }
 
-            // 启用中间件服务生成Swagger作为JSON终结点
-             app.UseSwagger();
-
-            // 启用中间件服务对swagger - ui，指定Swagger JSON终结点
-            app.UseSwaggerUI(c =>
+            if (env.IsProduction())
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                c.RoutePrefix = string.Empty;
-            });
+                Console.WriteLine("目前的环境是生产环境");
+            }
 
             app.UseHttpsRedirection();
 

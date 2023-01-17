@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,11 @@ namespace XCore.WebAPI
     /// </summary>
     public class MyService
     {
+        public MyService()
+        {
+            Debug.WriteLine("初始化MyService服务");
+        }
+
         public string GetName()
         {
             return "Jack";
