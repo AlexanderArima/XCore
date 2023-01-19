@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,20 @@ namespace XCore.WebAPI.Controllers
         {
             var result = loginService.Valid();
             return result == true ? "验证通过" : "验证不通过";
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "NormalUser")]
+        public ActionResult<string> Query()
+        {
+            return "NormalUser123";
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult<string> QueryAdmin()
+        {
+            return "Admin123";
         }
     }
 }
