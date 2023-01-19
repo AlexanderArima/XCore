@@ -2,9 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
+#nullable disable
 
 namespace XCore.EF.DataBaseFirst.Models
 {
@@ -19,72 +17,64 @@ namespace XCore.EF.DataBaseFirst.Models
         {
         }
 
-        public virtual DbSet<TDictionary> TDictionary { get; set; }
-        public virtual DbSet<TOrder> TOrder { get; set; }
-        public virtual DbSet<TRoom> TRoom { get; set; }
-        public virtual DbSet<TTest> TTest { get; set; }
-        public virtual DbSet<TUser> TUser { get; set; }
-        public virtual DbSet<TWorker> TWorker { get; set; }
+        public virtual DbSet<TDictionary> TDictionaries { get; set; }
+        public virtual DbSet<TOrder> TOrders { get; set; }
+        public virtual DbSet<TRoom> TRooms { get; set; }
+        public virtual DbSet<TTest> TTests { get; set; }
+        public virtual DbSet<TUser> TUsers { get; set; }
+        public virtual DbSet<TWorker> TWorkers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=127.0.0.1;port=3306;database=db_hotel;uid=root;pwd=123456", x => x.ServerVersion("5.7.34-mysql"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseMySql("server=127.0.0.1;port=3306;database=db_hotel;uid=root;pwd=123456", Microsoft.EntityFrameworkCore.ServerVersion.Parse("5.7.34-mysql"));
+                optionsBuilder.LogTo(Console.WriteLine);
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasCharSet("utf8")
+                .UseCollation("utf8_general_ci");
+
             modelBuilder.Entity<TDictionary>(entity =>
             {
                 entity.ToTable("t_dictionary");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasColumnType("int(32)")
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Actualname)
                     .IsRequired()
-                    .HasColumnName("actualname")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("actualname");
 
                 entity.Property(e => e.Createtime)
-                    .HasColumnName("createtime")
                     .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .ValueGeneratedOnAddOrUpdate()
+                    .HasColumnName("createtime");
 
                 entity.Property(e => e.Deleteflag)
                     .IsRequired()
-                    .HasColumnName("deleteflag")
-                    .HasColumnType("varchar(255)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(255)
+                    .HasColumnName("deleteflag");
 
                 entity.Property(e => e.Displayname)
                     .IsRequired()
-                    .HasColumnName("displayname")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("displayname");
 
                 entity.Property(e => e.Sx)
-                    .HasColumnName("sx")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("sx");
 
                 entity.Property(e => e.Typeid)
                     .IsRequired()
-                    .HasColumnName("typeid")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("typeid");
             });
 
             modelBuilder.Entity<TOrder>(entity =>
@@ -92,114 +82,90 @@ namespace XCore.EF.DataBaseFirst.Models
                 entity.ToTable("t_order");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasColumnType("int(32)")
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Address)
-                    .HasColumnName("address")
-                    .HasColumnType("varchar(200)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(200)
+                    .HasColumnName("address");
 
                 entity.Property(e => e.Appointtime)
-                    .HasColumnName("appointtime")
                     .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .ValueGeneratedOnAddOrUpdate()
+                    .HasColumnName("appointtime");
 
                 entity.Property(e => e.Birthday)
-                    .HasColumnName("birthday")
                     .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .ValueGeneratedOnAddOrUpdate()
+                    .HasColumnName("birthday");
 
                 entity.Property(e => e.Checkintime)
-                    .HasColumnName("checkintime")
                     .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .ValueGeneratedOnAddOrUpdate()
+                    .HasColumnName("checkintime");
 
                 entity.Property(e => e.Checkouttime)
-                    .HasColumnName("checkouttime")
                     .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .ValueGeneratedOnAddOrUpdate()
+                    .HasColumnName("checkouttime");
 
                 entity.Property(e => e.Createtime)
-                    .HasColumnName("createtime")
                     .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .ValueGeneratedOnAddOrUpdate()
+                    .HasColumnName("createtime");
 
                 entity.Property(e => e.Deleteflag)
-                    .HasColumnName("deleteflag")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int(11)")
+                    .HasColumnName("deleteflag");
 
                 entity.Property(e => e.Qzlx)
-                    .HasColumnName("qzlx")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("qzlx");
 
                 entity.Property(e => e.Roomid)
                     .IsRequired()
-                    .HasColumnName("roomid")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("roomid");
 
                 entity.Property(e => e.Sex)
-                    .HasColumnName("sex")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int(11)")
+                    .HasColumnName("sex");
 
                 entity.Property(e => e.Status)
                     .IsRequired()
-                    .HasColumnName("status")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("status");
 
                 entity.Property(e => e.Type)
                     .IsRequired()
-                    .HasColumnName("type")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("type");
 
                 entity.Property(e => e.Xm)
-                    .HasColumnName("xm")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("xm");
 
                 entity.Property(e => e.Ywm)
-                    .HasColumnName("ywm")
-                    .HasColumnType("varchar(100)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(100)
+                    .HasColumnName("ywm");
 
                 entity.Property(e => e.Ywx)
-                    .HasColumnName("ywx")
-                    .HasColumnType("varchar(100)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(100)
+                    .HasColumnName("ywx");
 
                 entity.Property(e => e.Zjhm)
                     .IsRequired()
-                    .HasColumnName("zjhm")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("zjhm");
 
                 entity.Property(e => e.Zjlx)
                     .IsRequired()
-                    .HasColumnName("zjlx")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("zjlx");
 
                 entity.Property(e => e.Zjz)
-                    .HasColumnName("zjz")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("zjz");
             });
 
             modelBuilder.Entity<TRoom>(entity =>
@@ -207,46 +173,38 @@ namespace XCore.EF.DataBaseFirst.Models
                 entity.ToTable("t_room");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasColumnType("int(32)")
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Createtime)
-                    .HasColumnName("createtime")
                     .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .ValueGeneratedOnAddOrUpdate()
+                    .HasColumnName("createtime");
 
                 entity.Property(e => e.Deleteflag)
-                    .HasColumnName("deleteflag")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int(11)")
+                    .HasColumnName("deleteflag");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasColumnName("name")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("name");
 
                 entity.Property(e => e.Number)
-                    .HasColumnName("number")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int(11)")
+                    .HasColumnName("number");
 
                 entity.Property(e => e.Status)
                     .IsRequired()
+                    .HasMaxLength(50)
                     .HasColumnName("status")
-                    .HasColumnType("varchar(50)")
-                    .HasComment("房间状态（包括：空闲，占用，脏房，维修中）")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasComment("房间状态（包括：空闲，占用，脏房，维修中）");
 
                 entity.Property(e => e.Type)
                     .IsRequired()
+                    .HasMaxLength(50)
                     .HasColumnName("type")
-                    .HasColumnType("varchar(50)")
-                    .HasComment("房间类型（包括：单人间，双人间，棋牌室，会议室，工具间，竞技房）")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasComment("房间类型（包括：单人间，双人间，棋牌室，会议室，工具间，竞技房）");
             });
 
             modelBuilder.Entity<TTest>(entity =>
@@ -254,16 +212,12 @@ namespace XCore.EF.DataBaseFirst.Models
                 entity.ToTable("t_test");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("varchar(255)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasColumnType("int(32)")
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Name)
-                    .HasColumnName("name")
-                    .HasColumnType("varchar(255)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(255)
+                    .HasColumnName("name");
             });
 
             modelBuilder.Entity<TUser>(entity =>
@@ -271,39 +225,31 @@ namespace XCore.EF.DataBaseFirst.Models
                 entity.ToTable("t_user");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasColumnType("int(32)")
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Createtime)
-                    .HasColumnName("createtime")
                     .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .ValueGeneratedOnAddOrUpdate()
+                    .HasColumnName("createtime");
 
                 entity.Property(e => e.Deleteflag)
-                    .HasColumnName("deleteflag")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int(11)")
+                    .HasColumnName("deleteflag");
 
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasColumnName("password")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("password");
 
                 entity.Property(e => e.Username)
                     .IsRequired()
-                    .HasColumnName("username")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("username");
 
                 entity.Property(e => e.Workerid)
-                    .HasColumnName("workerid")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("workerid");
             });
 
             modelBuilder.Entity<TWorker>(entity =>
@@ -311,75 +257,61 @@ namespace XCore.EF.DataBaseFirst.Models
                 entity.ToTable("t_worker");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasColumnType("int(32)")
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Address)
                     .IsRequired()
-                    .HasColumnName("address")
-                    .HasColumnType("varchar(200)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(200)
+                    .HasColumnName("address");
 
                 entity.Property(e => e.Birthday)
-                    .HasColumnName("birthday")
                     .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .ValueGeneratedOnAddOrUpdate()
+                    .HasColumnName("birthday");
 
                 entity.Property(e => e.Createtime)
-                    .HasColumnName("createtime")
                     .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .ValueGeneratedOnAddOrUpdate()
+                    .HasColumnName("createtime");
 
                 entity.Property(e => e.Deleteflag)
-                    .HasColumnName("deleteflag")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int(11)")
+                    .HasColumnName("deleteflag");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasColumnName("name")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("name");
 
                 entity.Property(e => e.Phone)
                     .IsRequired()
-                    .HasColumnName("phone")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("phone");
 
                 entity.Property(e => e.Quittime)
-                    .HasColumnName("quittime")
                     .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate();
+                    .ValueGeneratedOnAddOrUpdate()
+                    .HasColumnName("quittime");
 
                 entity.Property(e => e.Sex)
-                    .HasColumnName("sex")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int(11)")
+                    .HasColumnName("sex");
 
                 entity.Property(e => e.Zjhm)
                     .IsRequired()
-                    .HasColumnName("zjhm")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("zjhm");
 
                 entity.Property(e => e.Zjlx)
                     .IsRequired()
-                    .HasColumnName("zjlx")
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(50)
+                    .HasColumnName("zjlx");
 
                 entity.Property(e => e.Zjz)
+                    .HasMaxLength(100)
                     .HasColumnName("zjz")
-                    .HasColumnType("varchar(100)")
-                    .HasComment("证件照 - 存储的是照片在服务器的相对地址")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasComment("证件照 - 存储的是照片在服务器的相对地址");
             });
 
             OnModelCreatingPartial(modelBuilder);

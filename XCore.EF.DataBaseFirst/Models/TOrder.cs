@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
+#nullable disable
 
 namespace XCore.EF.DataBaseFirst.Models
 {
     public partial class TOrder
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Roomid { get; set; }
         public string Xm { get; set; }
         public string Ywx { get; set; }
