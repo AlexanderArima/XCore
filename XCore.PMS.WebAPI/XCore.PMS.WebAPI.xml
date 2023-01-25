@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XCore.PMS.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:XCore.PMS.WebAPI.Controllers.UserController.Login(System.String,System.String)">
+            <summary>
+            登录.
+            </summary>
+            <param name="username">用户名.</param>
+            <param name="password">密码.</param>
+            <returns></returns>
+        </member>
+        <member name="P:XCore.PMS.WebAPI.Model.ReceiveObject.code">
+            <summary>
+            代码，0表示请求成功
+            </summary>
+        </member>
+        <member name="P:XCore.PMS.WebAPI.Model.ReceiveObject.msg">
+            <summary>
+            错误信息，没有错误返回空
+            </summary>
+        </member>
+        <member name="P:XCore.PMS.WebAPI.Model.ReceiveObject.data">
+            <summary>
+            请求数据，无错误时返回值
+            </summary>
+        </member>
+    </members>
+</doc>
