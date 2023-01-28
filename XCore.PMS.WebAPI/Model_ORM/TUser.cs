@@ -11,7 +11,7 @@ namespace XCore.PMS.WebAPI.Model_ORM
         public string Username { get; set; }
         public string Password { get; set; }
         public string Workerid { get; set; }
-        public DateTime Createtime { get; set; }
+        public string Createtime { get; set; }
         public int Deleteflag { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace XCore.PMS.WebAPI.Model_ORM
         public string Type { get; set; }
         public string Status { get; set; }
         public int Number { get; set; }
-        public DateTime Createtime { get; set; }
+        public string Createtime { get; set; }
         public int Deleteflag { get; set; }
     }
 }

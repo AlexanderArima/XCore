@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using XCore.PMS.WebAPI.Model;
 
 #nullable disable
 
@@ -29,7 +28,8 @@ namespace XCore.PMS.WebAPI.Model_ORM
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql(GlobalConfig.DbConnectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("5.7.34-mysql"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseMySql("server=127.0.0.1;port=3306;database=db_hotel;uid=root;pwd=123456", Microsoft.EntityFrameworkCore.ServerVersion.Parse("5.7.34-mysql"));
             }
         }
 
@@ -52,8 +52,8 @@ namespace XCore.PMS.WebAPI.Model_ORM
                     .HasColumnName("actualname");
 
                 entity.Property(e => e.Createtime)
-                    .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate()
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .HasColumnName("createtime");
 
                 entity.Property(e => e.Deleteflag)
@@ -89,28 +89,25 @@ namespace XCore.PMS.WebAPI.Model_ORM
                     .HasColumnName("address");
 
                 entity.Property(e => e.Appointtime)
-                    .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate()
+                    .HasMaxLength(50)
                     .HasColumnName("appointtime");
 
                 entity.Property(e => e.Birthday)
-                    .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate()
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .HasColumnName("birthday");
 
                 entity.Property(e => e.Checkintime)
-                    .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate()
+                    .HasMaxLength(50)
                     .HasColumnName("checkintime");
 
                 entity.Property(e => e.Checkouttime)
-                    .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate()
+                    .HasMaxLength(50)
                     .HasColumnName("checkouttime");
 
                 entity.Property(e => e.Createtime)
-                    .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate()
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .HasColumnName("createtime");
 
                 entity.Property(e => e.Deleteflag)
@@ -176,8 +173,8 @@ namespace XCore.PMS.WebAPI.Model_ORM
                     .HasColumnName("id");
 
                 entity.Property(e => e.Createtime)
-                    .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate()
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .HasColumnName("createtime");
 
                 entity.Property(e => e.Deleteflag)
@@ -228,8 +225,8 @@ namespace XCore.PMS.WebAPI.Model_ORM
                     .HasColumnName("id");
 
                 entity.Property(e => e.Createtime)
-                    .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate()
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .HasColumnName("createtime");
 
                 entity.Property(e => e.Deleteflag)
@@ -265,13 +262,13 @@ namespace XCore.PMS.WebAPI.Model_ORM
                     .HasColumnName("address");
 
                 entity.Property(e => e.Birthday)
-                    .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate()
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .HasColumnName("birthday");
 
                 entity.Property(e => e.Createtime)
-                    .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate()
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .HasColumnName("createtime");
 
                 entity.Property(e => e.Deleteflag)
@@ -289,8 +286,7 @@ namespace XCore.PMS.WebAPI.Model_ORM
                     .HasColumnName("phone");
 
                 entity.Property(e => e.Quittime)
-                    .HasColumnType("datetime")
-                    .ValueGeneratedOnAddOrUpdate()
+                    .HasMaxLength(50)
                     .HasColumnName("quittime");
 
                 entity.Property(e => e.Sex)

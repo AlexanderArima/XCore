@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using XCore.PMS.WebAPI.Model;
+using XCore.PMS.WebAPI.Model_ORM;
 
 namespace XCore.PMS.WebAPI
 {
@@ -28,6 +29,8 @@ namespace XCore.PMS.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<db_hotelContext>();
 
             // 加载用户机密
             GlobalConfig.DbConnectionString = this.Configuration.GetConnectionString("configServer");

@@ -1,0 +1,251 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using XCore.PMS.WebAPI.Model;
+using XCore.PMS.WebAPI.Model_ORM;
+
+namespace XCore.PMS.WebAPI.Controllers
+{
+    [Route("[controller]/[action]")]
+    [ApiController]
+    public class OrderController : ControllerBase
+    {
+        private readonly db_hotelContext _context;
+
+        public OrderController(db_hotelContext context)
+        {
+            _context = context;
+        }
+
+        /// <summary>
+        /// 获取预定列表.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<ReceiveList<TOrder>>> GetAppointList(int index, int size)
+        {
+            try
+            {
+                var list = await _context.TOrders.Where(m => m.Status == "1").ToListAsync();
+                var count = list.Count;
+                list = list.Skip((index - 1) * size).Take(size).ToList();
+                ReceiveList<TOrder> result = new ReceiveList<TOrder>();
+                result.code = 0;
+                result.data = new ReceiveList<TOrder>.Data()
+                {
+                    index = index,
+                    count = count,
+                    list = list,
+                };
+
+                return result;
+            }
+            catch(Exception ex)
+            {
+                return Ok(new ReceiveObject()
+                {
+                    code = 999999,
+                    msg = "系统异常"
+                });
+            }
+        }
+
+        /// <summary>
+        /// 获取入住列表.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<ReceiveList<TOrder>>> GetCheckinList(int index, int size)
+        {
+            try
+            {
+                var list = await _context.TOrders.Where(m => m.Status == "2").ToListAsync();
+                var count = list.Count;
+                list = list.Skip((index - 1) * size).Take(size).ToList();
+                ReceiveList<TOrder> result = new ReceiveList<TOrder>();
+                result.code = 0;
+                result.data = new ReceiveList<TOrder>.Data()
+                {
+                    index = index,
+                    count = count,
+                    list = list,
+                };
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return Ok(new ReceiveObject()
+                {
+                    code = 999999,
+                    msg = "系统异常"
+                });
+            }
+        }
+
+        /// <summary>
+        /// 获取订单详情.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<TOrder>> GetOrder(int id)
+        {
+            var tOrder = await _context.TOrders.FindAsync(id);
+
+            if (tOrder == null)
+            {
+                return NotFound();
+            }
+
+            return tOrder;
+        }
+
+        /// <summary>
+        /// 修改订单，退房，续住操作可以参考它
+        /// </summary>
+        /// <param name="tOrder">订单对象.</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> UpdateOrder(TOrder tOrder)
+        {
+            try
+            {
+                var obj = _context.TOrders.Where(m => m.Id == tOrder.Id);
+                if (obj == null)
+                {
+                    return Ok(new ReceiveObject()
+                    {
+                        code = 999999,
+                        msg = "系统异常"
+                    });
+                }
+
+                _context.Update<TOrder>(tOrder);
+                await _context.SaveChangesAsync();
+                return Ok(new ReceiveObject()
+                {
+                    code = 0,
+                    msg = "修改成功"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ReceiveObject()
+                {
+                    code = 999999,
+                    msg = "系统异常"
+                });
+            }
+        }
+
+        /// <summary>
+        /// 旅客预定
+        /// </summary>
+        /// <param name="tOrder"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult<TOrder>> Appoint(TOrder tOrder)
+        {
+            try
+            {
+                tOrder.Appointtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                tOrder.Createtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                tOrder.Status = "1";
+                _context.TOrders.Add(tOrder);
+                await _context.SaveChangesAsync();
+                return Ok(new ReceiveObject()
+                {
+                    code = 0,
+                    msg = "添加成功"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ReceiveObject()
+                {
+                    code = 999999,
+                    msg = "系统异常"
+                });
+            }
+        }
+
+        /// <summary>
+        /// 旅客入住.
+        /// </summary>
+        /// <param name="tOrder"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult<TOrder>> Checkin(TOrder tOrder)
+        {
+            try
+            {
+                tOrder.Checkintime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                tOrder.Createtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                tOrder.Status = "2";
+                _context.TOrders.Add(tOrder);
+                await _context.SaveChangesAsync();
+                return Ok(new ReceiveObject()
+                {
+                    code = 0,
+                    msg = "添加成功"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ReceiveObject()
+                {
+                    code = 999999,
+                    msg = "系统异常"
+                });
+            }
+        }
+
+        /// <summary>
+        /// 退房.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<TOrder>> DeleteOrder(int id)
+        {
+            try
+            {
+                var obj = _context.TOrders.Where(m => m.Id == id).SingleOrDefault();
+                if (obj == null)
+                {
+                    return Ok(new ReceiveObject()
+                    {
+                        code = 999999,
+                        msg = "系统异常"
+                    });
+                }
+
+                _context.Update<TOrder>(obj);
+                await _context.SaveChangesAsync();
+                return Ok(new ReceiveObject()
+                {
+                    code = 0,
+                    msg = "修改成功"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ReceiveObject()
+                {
+                    code = 999999,
+                    msg = "系统异常"
+                });
+            }
+        }
+
+        private bool TOrderExists(int id)
+        {
+            return _context.TOrders.Any(e => e.Id == id);
+        }
+    }
+}

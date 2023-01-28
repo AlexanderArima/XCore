@@ -4,6 +4,75 @@
         <name>XCore.PMS.WebAPI</name>
     </assembly>
     <members>
+        <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.GetAppointList(System.Int32,System.Int32)">
+            <summary>
+            获取预定列表.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.GetCheckinList(System.Int32,System.Int32)">
+            <summary>
+            获取入住列表.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.GetOrder(System.Int32)">
+            <summary>
+            获取订单详情.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.UpdateOrder(XCore.PMS.WebAPI.Model_ORM.TOrder)">
+            <summary>
+            修改订单，退房，续住操作可以参考它
+            </summary>
+            <param name="tOrder">订单对象.</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.Appoint(XCore.PMS.WebAPI.Model_ORM.TOrder)">
+            <summary>
+            旅客预定
+            </summary>
+            <param name="tOrder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.Checkin(XCore.PMS.WebAPI.Model_ORM.TOrder)">
+            <summary>
+            旅客入住.
+            </summary>
+            <param name="tOrder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.DeleteOrder(System.Int32)">
+            <summary>
+            退房.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:XCore.PMS.WebAPI.Controllers.ReceiveList`1.code">
+            <summary>
+            代码，0表示请求成功
+            </summary>
+        </member>
+        <member name="P:XCore.PMS.WebAPI.Controllers.ReceiveList`1.msg">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="P:XCore.PMS.WebAPI.Controllers.ReceiveList`1.data">
+            <summary>
+            请求数据，无错误时返回值
+            </summary>
+        </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.RoomController.UpdateRoom(XCore.PMS.WebAPI.Model_ORM.TRoom)">
+            <summary>
+            修改房间.
+            </summary>
+            <param name="tRoom"></param>
+            <returns></returns>
+        </member>
         <member name="M:XCore.PMS.WebAPI.Controllers.UserController.Login(System.String,System.String)">
             <summary>
             登录.
@@ -19,7 +88,7 @@
         </member>
         <member name="P:XCore.PMS.WebAPI.Model.ReceiveObject.msg">
             <summary>
-            错误信息，没有错误返回空
+            消息
             </summary>
         </member>
         <member name="P:XCore.PMS.WebAPI.Model.ReceiveObject.data">

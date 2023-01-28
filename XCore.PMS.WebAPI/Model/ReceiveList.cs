@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace XCore.PMS.WebAPI.Model
 {
-    public class ReceiveObject
+    public class ReceiveList<T>
     {
         /// <summary>
         /// 代码，0表示请求成功
@@ -20,6 +20,15 @@ namespace XCore.PMS.WebAPI.Model
         /// <summary>
         /// 请求数据，无错误时返回值
         /// </summary>
-        public string data { get; set; }
+        public Data data { get; set; }
+
+        public class Data
+        {
+            public int index { get; set; }
+
+            public int count { get; set; }
+
+            public List<T> list { get; set; }
+        }
     }
 }
