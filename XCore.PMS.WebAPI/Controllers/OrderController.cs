@@ -211,7 +211,7 @@ namespace XCore.PMS.WebAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<TOrder>> DeleteOrder(int id)
+        public async Task<ActionResult<TOrder>> Checkout(int id)
         {
             try
             {
@@ -225,6 +225,114 @@ namespace XCore.PMS.WebAPI.Controllers
                     });
                 }
 
+                if(obj.Status != "2")
+                {
+                    return Ok(new ReceiveObject()
+                    {
+                        code = 999999,
+                        msg = "订单不是入住状态"
+                    });
+                }
+
+                obj.Status = "3";
+                obj.Checkouttime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                _context.Update<TOrder>(obj);
+                await _context.SaveChangesAsync();
+                return Ok(new ReceiveObject()
+                {
+                    code = 0,
+                    msg = "修改成功"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ReceiveObject()
+                {
+                    code = 999999,
+                    msg = "系统异常"
+                });
+            }
+        }
+
+        /// <summary>
+        /// 换房.
+        /// </summary>
+        /// <param name="id">订单id</param>
+        /// <param name="roomid">房间id</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<TOrder>> ChangeRoom(int id, string roomid)
+        {
+            try
+            {
+                var obj = _context.TOrders.Where(m => m.Id == id).SingleOrDefault();
+                if (obj == null)
+                {
+                    return Ok(new ReceiveObject()
+                    {
+                        code = 999999,
+                        msg = "系统异常"
+                    });
+                }
+
+                if (obj.Status != "2")
+                {
+                    return Ok(new ReceiveObject()
+                    {
+                        code = 999999,
+                        msg = "订单不是入住状态"
+                    });
+                }
+
+                obj.Roomid = roomid;
+                _context.Update<TOrder>(obj);
+                await _context.SaveChangesAsync();
+                return Ok(new ReceiveObject()
+                {
+                    code = 0,
+                    msg = "修改成功"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ReceiveObject()
+                {
+                    code = 999999,
+                    msg = "系统异常"
+                });
+            }
+        }
+
+        /// <summary>
+        /// 删除预订单.
+        /// </summary>
+        /// <param name="id">订单id</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<TOrder>> DeleteAppoint(int id)
+        {
+            try
+            {
+                var obj = _context.TOrders.Where(m => m.Id == id).SingleOrDefault();
+                if (obj == null)
+                {
+                    return Ok(new ReceiveObject()
+                    {
+                        code = 999999,
+                        msg = "系统异常"
+                    });
+                }
+
+                if (obj.Status != "1")
+                {
+                    return Ok(new ReceiveObject()
+                    {
+                        code = 999999,
+                        msg = "订单不是预订状态"
+                    });
+                }
+
+                obj.Status = "4";
                 _context.Update<TOrder>(obj);
                 await _context.SaveChangesAsync();
                 return Ok(new ReceiveObject()

@@ -44,27 +44,27 @@
             <param name="tOrder"></param>
             <returns></returns>
         </member>
-        <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.DeleteOrder(System.Int32)">
+        <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.Checkout(System.Int32)">
             <summary>
             退房.
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="P:XCore.PMS.WebAPI.Controllers.ReceiveList`1.code">
+        <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.ChangeRoom(System.Int32,System.String)">
             <summary>
-            代码，0表示请求成功
+            换房.
             </summary>
+            <param name="id">订单id</param>
+            <param name="roomid">房间id</param>
+            <returns></returns>
         </member>
-        <member name="P:XCore.PMS.WebAPI.Controllers.ReceiveList`1.msg">
+        <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.DeleteAppoint(System.Int32)">
             <summary>
-            消息
+            删除预订单.
             </summary>
-        </member>
-        <member name="P:XCore.PMS.WebAPI.Controllers.ReceiveList`1.data">
-            <summary>
-            请求数据，无错误时返回值
-            </summary>
+            <param name="id">订单id</param>
+            <returns></returns>
         </member>
         <member name="M:XCore.PMS.WebAPI.Controllers.RoomController.UpdateRoom(XCore.PMS.WebAPI.Model_ORM.TRoom)">
             <summary>
@@ -80,6 +80,21 @@
             <param name="username">用户名.</param>
             <param name="password">密码.</param>
             <returns></returns>
+        </member>
+        <member name="P:XCore.PMS.WebAPI.Model.ReceiveList`1.code">
+            <summary>
+            代码，0表示请求成功
+            </summary>
+        </member>
+        <member name="P:XCore.PMS.WebAPI.Model.ReceiveList`1.msg">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="P:XCore.PMS.WebAPI.Model.ReceiveList`1.data">
+            <summary>
+            请求数据，无错误时返回值
+            </summary>
         </member>
         <member name="P:XCore.PMS.WebAPI.Model.ReceiveObject.code">
             <summary>
