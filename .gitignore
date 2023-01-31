@@ -304,3 +304,6 @@ __pycache__/
 # OpenCover UI analysis results
 OpenCover/
 #    gitignore  
+/XCore.PMS.Winform/dll/DSkin.Design.dll
+/XCore.PMS.Winform/dll/DSkin.dll
+/XCore.PMS.Winform/dll/DSkin.XML
