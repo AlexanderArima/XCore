@@ -36,12 +36,21 @@ namespace XCore.PMS.WebAPI.Controllers
         public IActionResult Login(string username, string password)
         {
             //1、验证用户名和密码
+            if(string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                return Ok(new ReceiveObject()
+                {
+                    code = 999999,
+                    msg = "用户名或密码不能为空"
+                });
+            }
+
             using (db_hotelContext context = new db_hotelContext())
             {
                 var flag = context.TUsers.Any(m => m.Username == username);
                 if (flag == false)
                 {
-                    return BadRequest(new ReceiveObject()
+                    return Ok(new ReceiveObject()
                     {
                         code = 999999,
                         msg = "用户名不存在"
@@ -51,7 +60,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 flag = context.TUsers.Any(m => m.Username == username && m.Password == password);
                 if (flag == false)
                 {
-                    return BadRequest(new ReceiveObject()
+                    return Ok(new ReceiveObject()
                     {
                         code = 999999,
                         msg = "密码错误"

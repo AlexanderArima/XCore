@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -6,10 +7,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using XCore.PMS.WebAPI.Model;
 using XCore.PMS.WebAPI.Model_ORM;
@@ -49,6 +52,28 @@ namespace XCore.PMS.WebAPI
 
                 var xmlPath = Path.Combine(basePath, "XCore.PMS.WebAPI.xml");
                 c.IncludeXmlComments(xmlPath);
+            });
+
+            // 授权
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                var secretByte = Encoding.UTF8.GetBytes(Configuration["Authentication:secretKey"]);
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    //只有配置的发布者donesoft.cn才会被接受
+                    ValidateIssuer = true,
+                    ValidIssuer = Configuration["Authentication:issuer"],
+
+                    //只有配置的使用者donesoft.cn才会被接受
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["Authentication:audience"],
+
+                    //验证token是否过期
+                    ValidateLifetime = true,
+
+                    //对密码进行加密
+                    IssuerSigningKey = new SymmetricSecurityKey(secretByte)
+                };
             });
         }
 

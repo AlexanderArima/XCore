@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace XCore.PMS.WebAPI.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class OrderController : ControllerBase
     {
         private readonly db_hotelContext _context;
@@ -135,7 +137,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new ReceiveObject()
+                return Ok(new ReceiveObject()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -197,7 +199,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new ReceiveObject()
+                return Ok(new ReceiveObject()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -246,7 +248,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new ReceiveObject()
+                return Ok(new ReceiveObject()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -295,7 +297,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new ReceiveObject()
+                return Ok(new ReceiveObject()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -343,7 +345,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new ReceiveObject()
+                return Ok(new ReceiveObject()
                 {
                     code = 999999,
                     msg = "系统异常"
