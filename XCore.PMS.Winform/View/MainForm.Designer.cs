@@ -131,7 +131,7 @@ namespace XCore.PMS.Winform.View
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.ShowIcon = false;
-            this.Text = "MainForm";
+            this.Text = "主界面";
             this.dSkinMenuStrip1.ResumeLayout(false);
             this.dSkinMenuStrip1.PerformLayout();
             this.ResumeLayout(false);

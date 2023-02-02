@@ -4,6 +4,13 @@
         <name>XCore.PMS.WebAPI</name>
     </assembly>
     <members>
+        <member name="M:XCore.PMS.WebAPI.Controllers.DictionaryController.GetList(System.String)">
+            <summary>
+            根据字典类型返回对应的数据字典.
+            </summary>
+            <param name="typeid"></param>
+            <returns></returns>
+        </member>
         <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.GetAppointList(System.Int32,System.Int32)">
             <summary>
             获取预定列表.

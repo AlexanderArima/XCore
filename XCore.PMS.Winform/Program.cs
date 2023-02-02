@@ -34,7 +34,7 @@ namespace XCore.PMS.Winform
                 form.Dispose();
             }
 
-            Application.Run(new LoginForm());
+            Application.Run(new MainForm());
         }
 
 

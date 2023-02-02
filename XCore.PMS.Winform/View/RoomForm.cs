@@ -17,5 +17,24 @@ namespace XCore.PMS.Winform.View
         {
             InitializeComponent();
         }
+
+        private void RoomForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 添加房间ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RoomAddForm form = new RoomAddForm();
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                form.Dispose();
+            }
+        }
+
+        private void RoomForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

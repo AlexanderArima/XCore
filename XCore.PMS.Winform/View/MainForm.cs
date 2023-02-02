@@ -21,6 +21,11 @@ namespace XCore.PMS.Winform.View
         private void 房间管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // 打开房间管理画面
+            RoomForm form = new RoomForm();
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                form.Dispose();
+            }
         }
     }
 }
