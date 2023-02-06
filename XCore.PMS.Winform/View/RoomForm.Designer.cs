@@ -34,10 +34,10 @@ namespace XCore.PMS.Winform.View
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.dSkinPanel2 = new DSkin.Controls.DSkinPanel();
             this.dSkinMenuStrip1 = new DSkin.Controls.DSkinMenuStrip();
-            this.dSkinContextMenuStrip1 = new DSkin.Controls.DSkinContextMenuStrip();
             this.添加房间ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改房间ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除房间ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dSkinContextMenuStrip1 = new DSkin.Controls.DSkinContextMenuStrip();
             this.dSkinPanel1.SuspendLayout();
             this.dSkinMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -84,25 +84,25 @@ namespace XCore.PMS.Winform.View
             this.dSkinMenuStrip1.BaseForeAnamorphosisBorder = 4;
             this.dSkinMenuStrip1.BaseForeAnamorphosisColor = System.Drawing.Color.White;
             this.dSkinMenuStrip1.BaseHoverFore = System.Drawing.Color.White;
-            this.dSkinMenuStrip1.BaseItemAnamorphosis = true;
-            this.dSkinMenuStrip1.BaseItemBorder = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.dSkinMenuStrip1.BaseItemAnamorphosis = false;
+            this.dSkinMenuStrip1.BaseItemBorder = System.Drawing.Color.DodgerBlue;
             this.dSkinMenuStrip1.BaseItemBorderShow = true;
             this.dSkinMenuStrip1.BaseItemDown = ((System.Drawing.Image)(resources.GetObject("dSkinMenuStrip1.BaseItemDown")));
-            this.dSkinMenuStrip1.BaseItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.dSkinMenuStrip1.BaseItemHover = System.Drawing.Color.DodgerBlue;
             this.dSkinMenuStrip1.BaseItemMouse = ((System.Drawing.Image)(resources.GetObject("dSkinMenuStrip1.BaseItemMouse")));
-            this.dSkinMenuStrip1.BaseItemPressed = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.dSkinMenuStrip1.BaseItemPressed = System.Drawing.Color.DodgerBlue;
             this.dSkinMenuStrip1.BaseItemRadius = 4;
             this.dSkinMenuStrip1.BaseItemRadiusStyle = DSkin.Common.RoundStyle.All;
-            this.dSkinMenuStrip1.BaseItemSplitter = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.dSkinMenuStrip1.BaseItemSplitter = System.Drawing.Color.DodgerBlue;
             this.dSkinMenuStrip1.CheckedImage = null;
             this.dSkinMenuStrip1.DropDownImageSeparator = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
             this.dSkinMenuStrip1.Fore = System.Drawing.Color.Black;
             this.dSkinMenuStrip1.HoverFore = System.Drawing.Color.White;
-            this.dSkinMenuStrip1.ItemAnamorphosis = true;
-            this.dSkinMenuStrip1.ItemBorder = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.dSkinMenuStrip1.ItemAnamorphosis = false;
+            this.dSkinMenuStrip1.ItemBorder = System.Drawing.Color.DodgerBlue;
             this.dSkinMenuStrip1.ItemBorderShow = true;
-            this.dSkinMenuStrip1.ItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
-            this.dSkinMenuStrip1.ItemPressed = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.dSkinMenuStrip1.ItemHover = System.Drawing.Color.DodgerBlue;
+            this.dSkinMenuStrip1.ItemPressed = System.Drawing.Color.DodgerBlue;
             this.dSkinMenuStrip1.ItemRadius = 4;
             this.dSkinMenuStrip1.ItemRadiusStyle = DSkin.Common.RoundStyle.All;
             this.dSkinMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -120,6 +120,27 @@ namespace XCore.PMS.Winform.View
             this.dSkinMenuStrip1.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(228)))), ((int)(((byte)(236)))));
             this.dSkinMenuStrip1.TitleRadius = 4;
             this.dSkinMenuStrip1.TitleRadiusStyle = DSkin.Common.RoundStyle.All;
+            // 
+            // 添加房间ToolStripMenuItem
+            // 
+            this.添加房间ToolStripMenuItem.Name = "添加房间ToolStripMenuItem";
+            this.添加房间ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.添加房间ToolStripMenuItem.Text = "添加房间";
+            this.添加房间ToolStripMenuItem.Click += new System.EventHandler(this.添加房间ToolStripMenuItem_Click);
+            // 
+            // 修改房间ToolStripMenuItem
+            // 
+            this.修改房间ToolStripMenuItem.Name = "修改房间ToolStripMenuItem";
+            this.修改房间ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.修改房间ToolStripMenuItem.Text = "修改房间";
+            this.修改房间ToolStripMenuItem.Click += new System.EventHandler(this.修改房间ToolStripMenuItem_Click);
+            // 
+            // 删除房间ToolStripMenuItem
+            // 
+            this.删除房间ToolStripMenuItem.Name = "删除房间ToolStripMenuItem";
+            this.删除房间ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.删除房间ToolStripMenuItem.Text = "删除房间";
+            this.删除房间ToolStripMenuItem.Click += new System.EventHandler(this.删除房间ToolStripMenuItem_Click);
             // 
             // dSkinContextMenuStrip1
             // 
@@ -147,25 +168,6 @@ namespace XCore.PMS.Winform.View
             this.dSkinContextMenuStrip1.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(228)))), ((int)(((byte)(236)))));
             this.dSkinContextMenuStrip1.TitleRadius = 4;
             this.dSkinContextMenuStrip1.TitleRadiusStyle = DSkin.Common.RoundStyle.All;
-            // 
-            // 添加房间ToolStripMenuItem
-            // 
-            this.添加房间ToolStripMenuItem.Name = "添加房间ToolStripMenuItem";
-            this.添加房间ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.添加房间ToolStripMenuItem.Text = "添加房间";
-            this.添加房间ToolStripMenuItem.Click += new System.EventHandler(this.添加房间ToolStripMenuItem_Click);
-            // 
-            // 修改房间ToolStripMenuItem
-            // 
-            this.修改房间ToolStripMenuItem.Name = "修改房间ToolStripMenuItem";
-            this.修改房间ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.修改房间ToolStripMenuItem.Text = "修改房间";
-            // 
-            // 删除房间ToolStripMenuItem
-            // 
-            this.删除房间ToolStripMenuItem.Name = "删除房间ToolStripMenuItem";
-            this.删除房间ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.删除房间ToolStripMenuItem.Text = "删除房间";
             // 
             // RoomForm
             // 

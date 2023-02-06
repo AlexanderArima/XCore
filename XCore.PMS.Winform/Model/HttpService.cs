@@ -52,5 +52,35 @@ namespace XCore.PMS.Winform.Model
             var obj = JsonConvert.DeserializeObject<T>(json);
             return obj;
         }
+
+        /// <summary>
+        /// Post请求数据
+        /// </summary>
+        /// <param name="path">访问路径</param>
+        /// <param name="seriviceName">服务名</param>
+        /// <param name="param">参数</param>
+        /// <returns></returns>
+        public static T PostService<T>(string path,
+            string param)
+        {
+            var json = Utils.HttpPost(path, param, 10000);
+            var obj = JsonConvert.DeserializeObject<T>(json);
+            return obj;
+        }
+
+        /// <summary>
+        /// Post请求数据
+        /// </summary>
+        /// <param name="path">访问路径</param>
+        /// <param name="seriviceName">服务名</param>
+        /// <param name="param">参数</param>
+        /// <returns></returns>
+        public static T PostService<T>(string path, 
+            string param, int timeOut)
+        {
+            var json = Utils.HttpPost(path, param, timeOut);
+            var obj = JsonConvert.DeserializeObject<T>(json);
+            return obj;
+        }
     }
 }

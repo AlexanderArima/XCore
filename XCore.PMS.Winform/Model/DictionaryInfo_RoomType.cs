@@ -9,16 +9,13 @@ namespace XCore.PMS.Winform.Model
 {
     public class DictionaryInfo_RoomType
     {
+        public static List<DictionaryInfo_RoomType> list_roomtype;
+
         public string actualName { get; set; }
 
         public string displayName { get; set; }
 
-        /// <summary>
-        /// 获取房间类型.
-        /// </summary>
-        /// <param name="typeid"></param>
-        /// <returns></returns>
-        public List<DictionaryInfo_RoomType> GetList()
+        static DictionaryInfo_RoomType()
         {
             try
             {
@@ -43,13 +40,22 @@ namespace XCore.PMS.Winform.Model
                     list = null;
                 }
 
-                return list;
+                DictionaryInfo_RoomType.list_roomtype = list;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Log4NetHelper.Error("DictionaryInfo_RoomType：GetList出错：" + ex.Message, ex);
-                return null;
+                Log4NetHelper.Error("DictionaryInfo_RoomType：出错：" + ex.Message, ex);
             }
+        }
+
+        /// <summary>
+        /// 获取房间类型.
+        /// </summary>
+        /// <param name="typeid"></param>
+        /// <returns></returns>
+        public List<DictionaryInfo_RoomType> GetList()
+        {
+            return list_roomtype;
         }
     }
 }

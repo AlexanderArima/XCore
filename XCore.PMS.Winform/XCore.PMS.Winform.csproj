@@ -67,6 +67,7 @@
     <Compile Include="Model\DictionaryInfo_RoomType.cs" />
     <Compile Include="Model\Log4NetHelper.cs" />
     <Compile Include="Model\TDictionary.cs" />
+    <Compile Include="Model\TRoom.cs" />
     <Compile Include="ViewModel\RoomFormViewModel.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -98,7 +99,15 @@
     <Compile Include="View\RoomForm.Designer.cs">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\RoomUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RoomUpdateForm.Designer.cs">
+      <DependentUpon>RoomUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VO\DictionaryInfo_RoomType\GetListVO.cs" />
+    <Compile Include="VO\RoomFormViewModel_GetSingle\GetListVO.cs" />
+    <Compile Include="VO\RoomFormViewModel_GetSingle\GetSingleVO.cs" />
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\RoomForm.resx">
       <DependentUpon>RoomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RoomUpdateForm.resx">
+      <DependentUpon>RoomUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Plugin\jquery\jquery.min.map" />

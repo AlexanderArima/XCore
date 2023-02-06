@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XCore.PMS.WebAPI.Model;
 using XCore.PMS.WebAPI.Model_ORM;
+using XCore.PMS.WebAPI.VO.Room;
 
 namespace XCore.PMS.WebAPI.Controllers
 {
@@ -31,16 +32,23 @@ namespace XCore.PMS.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<TRoom>> GetRoom(int id)
+        public async Task<ActionResult<GetRoomVO>> GetRoom(int id)
         {
             var tRoom = await _context.TRooms.FindAsync(id);
-
             if (tRoom == null)
             {
                 return NotFound();
             }
 
-            return tRoom;
+            GetRoomVO model = new GetRoomVO();
+            model.code = 0;
+            model.data = new TRoom();
+            model.data.Name = tRoom.Name;
+            model.data.Id = tRoom.Id;
+            model.data.Type = tRoom.Type;
+            model.data.Status = tRoom.Status;
+            model.data.Number = tRoom.Number;
+            return model;
         }
 
         /// <summary>
@@ -82,10 +90,30 @@ namespace XCore.PMS.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<TRoom>> AddRoom(TRoom tRoom)
+        public async Task<ActionResult<TRoom>> AddRoom(AddRoomVO model)
         {
             try
             {
+                var list = await _context.TRooms.ToListAsync();
+                var flag = list.Exists(m => m.Name == model.Name);
+                if(flag)
+                {
+                    return Ok(new ReceiveObject()
+                    {
+                        code = 999999,
+                        msg = "该房间名已存在"
+                    });
+                }
+                TRoom tRoom = new TRoom()
+                {
+                    Name = model.Name,
+                    Type = model.Type,
+                    Createtime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    Deleteflag = 0,
+                    Status = "0",
+                    Number = 0
+                };
+
                 _context.TRooms.Add(tRoom);
                 await _context.SaveChangesAsync();
                 return Ok(new ReceiveObject()

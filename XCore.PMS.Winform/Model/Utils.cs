@@ -167,5 +167,69 @@ namespace XCore.PMS.Winform.Model
             return responseStr;
         }
 
+        /// <summary>
+        /// 指定Post地址使用Get 方式获取全部字符串
+        /// </summary>
+        /// <param name="url">请求后台地址</param>
+        /// <param name="timeOut">过期时间(毫秒)</param>
+        /// <returns></returns>
+        public static string HttpPost(string url, string param, int timeOut)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "POST";
+            request.Accept = "*/*";
+            request.Timeout = timeOut;
+            request.KeepAlive = true;
+            request.ContentType = "application/json";
+            request.Headers.Add("Authorization", string.Format("bearer {0}", HttpService.Token));
+            IWebProxy theProxy = request.Proxy;
+            if (theProxy != null)
+            {
+                // Use the default credentials of the logged on user.
+                theProxy.Credentials = CredentialCache.DefaultCredentials;
+            }
+            SetCertificatePolicy();
+            try
+            {
+                //添加Post 参数
+                byte[] data = Encoding.UTF8.GetBytes(param.ToString());
+                request.ContentLength = data.Length;
+                using (Stream reqStream = request.GetRequestStream())
+                {
+                    reqStream.Write(data, 0, data.Length);
+                }
+                Stream stream = null;
+                HttpWebResponse resp = null;
+                //获取响应内容
+                string result = "";
+                try
+                {
+                    resp = (HttpWebResponse)request.GetResponse();
+                    stream = resp.GetResponseStream();
+                    using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                    {
+                        result = reader.ReadToEnd();
+                    }
+                }
+                finally
+                {
+                    if (stream != null)
+                    {
+                        stream.Close();
+                    }
+                    if (resp != null)
+                    {
+                        resp.Close();
+                    }
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Log4NetHelper.Error("Utils：HttpPost出错：" + ex.Message, ex);
+                return null;
+            }
+        }
     }
 }

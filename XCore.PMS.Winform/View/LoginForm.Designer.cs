@@ -62,6 +62,7 @@ namespace XCore.PMS.Winform.View
             this.dSkinTextBox1.Name = "dSkinTextBox1";
             this.dSkinTextBox1.Size = new System.Drawing.Size(173, 21);
             this.dSkinTextBox1.TabIndex = 2;
+            this.dSkinTextBox1.Text = "admin";
             this.dSkinTextBox1.TransparencyKey = System.Drawing.Color.Empty;
             this.dSkinTextBox1.WaterFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dSkinTextBox1.WaterText = "";
@@ -72,8 +73,10 @@ namespace XCore.PMS.Winform.View
             this.dSkinTextBox2.BitmapCache = false;
             this.dSkinTextBox2.Location = new System.Drawing.Point(140, 121);
             this.dSkinTextBox2.Name = "dSkinTextBox2";
+            this.dSkinTextBox2.PasswordChar = '*';
             this.dSkinTextBox2.Size = new System.Drawing.Size(173, 21);
             this.dSkinTextBox2.TabIndex = 3;
+            this.dSkinTextBox2.Text = "123456";
             this.dSkinTextBox2.TransparencyKey = System.Drawing.Color.Empty;
             this.dSkinTextBox2.WaterFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dSkinTextBox2.WaterText = "";
