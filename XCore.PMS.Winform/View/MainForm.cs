@@ -27,5 +27,15 @@ namespace XCore.PMS.Winform.View
                 form.Dispose();
             }
         }
+
+        private void dSkinButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dSkinButton2_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

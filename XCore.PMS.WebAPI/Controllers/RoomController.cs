@@ -26,9 +26,22 @@ namespace XCore.PMS.WebAPI.Controllers
 
         // GET: api/Room
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TRoom>>> GetList()
+        public async Task<ActionResult> GetList()
         {
-            return await _context.TRooms.ToListAsync();
+            GetListVO model = new GetListVO();
+            try
+            {
+                var list = await _context.TRooms.ToListAsync();
+                model.code = 0;
+                model.data = list;
+            }
+            catch(Exception ex)
+            {
+                model.code = 999999;
+                model.msg = "系统异常";
+            }
+
+            return Ok(model);
         }
 
         [HttpGet]

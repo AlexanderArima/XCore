@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>房间列表</title>
+    <style>
+        #div_main {
+            width: 810px;
+            height: auto;
+            background-color: white;
+        }
+
+            #div_main .div_item {
+                width: 70px;
+                height: 70px;
+                background-color: white;
+                float: left;
+                margin: 0 0 0 0;
+                border: 1px solid lightgrey;
+            }
+
+                #div_main .div_item .div_head {
+                    width: 70px;
+                    height: 20px;
+                }
+
+                #div_main .div_item .div_unuse {
+                    background-color: limegreen;
+                }
+
+                    #div_main .div_item .div_unuse:hover {
+                        background-color: green;
+                    }
+
+                #div_main .div_item .div_use {
+                    background-color: lightcoral;
+                }
+
+                    #div_main .div_item .div_use:hover {
+                        background-color: orangered;
+                    }
+
+                #div_main .div_item .div_repair{
+                    background-color: gray;
+                }
+
+                    #div_main .div_item .div_repair:hover {
+                        background-color: dimgray;
+                    }
+
+                #div_main .div_item .div_dirty {
+                    background-color: gold;
+                }
+
+                    #div_main .div_item .div_dirty:hover {
+                        background-color: goldenrod;
+                    }
+
+                #div_main .div_item .div_fail {
+                    background-color: black;
+                }
+
+                #div_main .div_item .div_title {
+                    width: 70px;
+                    height: 30px;
+                    background-color: white;
+                    text-align: center;
+                    word-break: break-all;
+                    font-size: 14px;
+                }
+
+                #div_main .div_item .div_attr {
+                    background-color: white;
+                    text-align: left;
+                    vertical-align: bottom;
+                    margin-left: 4px;
+                }
+
+                #div_main .div_item .div_head input[type='checkbox'] {
+                    float: right;
+                }
+    </style>
+</head>
+<body>
+    <div>
+        <!--<input type="button" onclick="Delete()" value="删除" />-->
+    </div>
+    <div id="div_main">
+        <div class="div_item tag_unuse" id="div_item1">
+            <div class="div_head div_use">
+            </div>
+            <div class="div_title">AAAAABBBBB</div>
+            <div class="div_attr">客</div>
+        </div>
+        <div class="div_item tag_unuse" id="div_item2">
+            <div class="div_head div_unuse">
+                <input type="checkbox" value="101" />
+            </div>
+            <div class="div_title">101</div>
+            <div class="div_attr">客</div>
+        </div>
+        <!--
+        <div class='div_item' id='div_item1'>
+            <div class='div_head div_unuse'>
+                <input type='checkbox' value='1005' /></div>
+            <div class='div_title'>C100</div>
+            <div class='div_attr'></div>
+        </div>
+        <div class='div_item' id='div_item2'>
+            <div class='div_head div_unuse'>
+                <input type='checkbox' value='1113' />
+            </div>
+            <div class='div_title'>100</div>
+            <div class='div_attr'></div>
+        </div>
+        <div class='div_item' id='div_item3'><div class='div_head div_unuse'><input type='checkbox' value='846' /></div><div class='div_title'>A100</div><div class='div_attr'></div></div><div class='div_item' id='div_item4'><div class='div_head div_unuse'><input type='checkbox' value='1006' /></div><div class='div_title'>C101</div><div class='div_attr'></div></div>
+        <div class='div_item' id='div_item5'>
+            <div class='div_head div_use'></div>
+            <div class='div_title'>102</div>
+            <div class='div_attr'></div>
+        </div>
+        <div class='div_item' id='div_item6'><div class='div_head div_use'></div><div class='div_title'>A102</div><div class='div_attr'></div></div><div class='div_item' id='div_item7'><div class='div_head div_unuse'><input type='checkbox' value='1007' /></div><div class='div_title'>C102</div><div class='div_attr'></div></div><div class='div_item' id='div_item8'><div class='div_head div_unuse'><input type='checkbox' value='1008' /></div><div class='div_title'>C103</div><div class='div_attr'></div></div><div class='div_item' id='div_item9'><div class='div_head div_unuse'><input type='checkbox' value='997' /></div><div class='div_title'>103</div><div class='div_attr'>客</div></div><div class='div_item' id='div_item10'><div class='div_head div_unuse'><input type='checkbox' value='849' /></div><div class='div_title'>A103</div><div class='div_attr'></div></div><div class='div_item' id='div_item11'><div class='div_head div_unuse'><input type='checkbox' value='998' /></div><div class='div_title'>104</div><div class='div_attr'>办</div></div><div class='div_item' id='div_item12'><div class='div_head div_use'></div><div class='div_title'>A104</div><div class='div_attr'></div></div>
+        <div class='div_item' id='div_item13'><div class='div_head div_unuse'><input type='checkbox' value='999' /></div><div class='div_title'>105</div><div class='div_attr'>办</div></div><div class='div_item' id='div_item14'><div class='div_head div_unuse'><input type='checkbox' value='851' /></div><div class='div_title'>A105</div><div class='div_attr'>办</div></div><div class='div_item' id='div_item15'><div class='div_head div_unuse'><input type='checkbox' value='852' /></div><div class='div_title'>A106</div><div class='div_attr'>办</div></div><div class='div_item' id='div_item16'><div class='div_head div_unuse'><input type='checkbox' value='1000' /></div><div class='div_title'>106</div><div class='div_attr'>客</div></div><div class='div_item' id='div_item17'><div class='div_head div_unuse'><input type='checkbox' value='1011' /></div><div class='div_title'>C106</div><div class='div_attr'></div></div><div class='div_item' id='div_item18'>
+            <div class='div_head div_unuse'><input type='checkbox' value='853' /></div><d iv class='div_title'>A107
+        </div><div class='div_attr'>客</div>
+        </div><div class='div_item' id='div_item19'><div class='div_head div_unuse'><input type='checkbox' value='1001' /></div><div class='div_title'>107</div><div class='div_attr'>客</div></div><div class='div_item' id='div_item20'><div class='div_head div_unuse'><input type='checkbox' value='854' /></div><div class='div_title'>A108</div><div class='div_attr'>客</div></div><div class='div_item' id='div_item21'><div class='div_head div_unuse'><input type='checkbox' value='1013' /></div><div class='div_title'>C108</div><div class='div_attr'></div></div><div class='div_item' id='div_item22'><div class='div_head div_unuse'><input type='checkbox' value='1002' /></div><div class='div_title'>108</div><div class='div_attr'>棋</div></div><div class='div_item' id='div_item23'><div class='div_head div_unuse'><input type='checkbox' value='1003' /></div><div class='div_title'>109</div><div class='div_attr'>客</div></div><div class='div_item' id='div_item24'>
+            <div class='div_head div_use'></div><div class='div_title'>A109</div><div class='div_attr'></div>
+        </div><div class='div_item' id='div_item25'><div class='div_head div_unuse'><input type='checkbox' value='1014' /></div><div class='div_title'>C109</div><div class='div_attr'></div></div><div class='div_item' id='div_item26'><div class='div_head div_unuse'><input type='checkbox' value='1015' /></div><div class='div_title'>C110</div><div class='div_attr'></div></div>
+            -->
+    </div>
+    <div id="div_data"></div>
+    <input type="hidden" id="hidden_data" />
+    <script src="../../Plugin/jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            //单页面测试时需要注册方法
+            // RegisterEvent();
+        };
+
+        /**
+         * 注册事件.
+         * */
+        function RegisterEvent() {
+            // 鼠标移入事件
+            $(".div_item").mouseenter(function (a) {
+                var div_content = $($(a)[0].currentTarget)[0].children[0].className;
+                // console.log($($($(a)[0].currentTarget)[0].children[0]));
+                //return;
+                if (div_content.indexOf("div_use") != -1) {
+                    // 查找到div_use，表示是在住房间
+                    $($($(a)[0].currentTarget)[0].children[0]).css("background-color", "orangered");
+                }
+                else if (div_content.indexOf("div_unuse") != -1) {
+                    // 查找到div_unuse，表示是空闲房间
+                    $($($(a)[0].currentTarget)[0].children[0]).css("background-color", "green");
+                }
+                else if (div_content.indexOf("div_repair") != -1) {
+                    // 查找到div_review，表示是待审核房间
+                    $($($(a)[0].currentTarget)[0].children[0]).css("background-color", "dimgray");
+                }
+                else if (div_content.indexOf("div_dirty") != -1) {
+                    // 查找到div_review，表示是待审核房间
+                    $($($(a)[0].currentTarget)[0].children[0]).css("background-color", "goldenrod");
+                }
+            });
+
+            // 鼠标移出事件
+            $(".div_item").mouseleave(function (a) {
+                var div_content = $($(a)[0].currentTarget)[0].children[0].className;
+                // var div_content = $(a)[0].currentTarget.getElementsByClassName("div_head")[0].attributes[0].textContent;
+                if (div_content.indexOf("div_use") != -1) {
+                    // 查找到div_use，表示是在住房间
+                    $($($(a)[0].currentTarget)[0].children[0]).css("background-color", "lightcoral");
+                }
+                else if (div_content.indexOf("div_unuse") != -1) {
+                    // 查找到div_unuse，表示是空闲房间
+                    $($($(a)[0].currentTarget)[0].children[0]).css("background-color", "limegreen");
+                }
+                else if (div_content.indexOf("div_repair") != -1) {
+                    // 查找到div_review，表示是待审核房间
+                    $($($(a)[0].currentTarget)[0].children[0]).css("background-color", "gray");
+                }
+                else if (div_content.indexOf("div_dirty") != -1) {
+                    // 查找到div_review，表示是待审核房间
+                    $($($(a)[0].currentTarget)[0].children[0]).css("background-color", "gold");
+                }
+            });
+
+            // 鼠标点击事件（空闲房间鼠标单击会切换多选框控件的选中状态）
+            $(".div_item").click(function (a) {
+                var div_content = $($(a)[0].currentTarget)[0].children[0].className;
+                // var div_content = $(a)[0].currentTarget.getElementsByClassName("div_head")[0].attributes[0].textContent;
+                if (div_content.indexOf("div_use") != -1) {
+                    // 查找到div_use，表示是在住房间
+                }
+                else if (div_content.indexOf("div_unuse") != -1) {
+                    // 查找到div_unuse，表示是空闲房间
+                    var bool_checkbox = $($($(a)[0].currentTarget)[0].children[0]).eq(0)[0].children[0].checked;
+                    $($($(a)[0].currentTarget)[0].children[0]).eq(0)[0].children[0].checked = !bool_checkbox;
+                }
+                else if (div_content.indexOf("div_repair") != -1) {
+                    // 查找到div_review，表示是待审核房间
+                    var bool_checkbox = $($($(a)[0].currentTarget)[0].children[0]).eq(0)[0].children[0].checked;
+                    $($($(a)[0].currentTarget)[0].children[0]).eq(0)[0].children[0].checked = !bool_checkbox;
+                }
+                else if (div_content.indexOf("div_fail") != -1) {
+                    // 查找到div_review，表示是待审核房间
+                    var bool_checkbox = $($($(a)[0].currentTarget)[0].children[0]).eq(0)[0].children[0].checked;
+                    $($($(a)[0].currentTarget)[0].children[0]).eq(0)[0].children[0].checked = !bool_checkbox;
+                }
+            });
+
+            // 鼠标点击事件（空闲房间鼠标单击会切换多选框控件的选中状态）
+            $("input[type='checkbox']").click(function (a) {
+                var bool_checkbox = $($(a)[0].currentTarget).eq(0)[0].checked;
+                $($(a)[0].currentTarget).eq(0)[0].checked = !bool_checkbox;
+            });
+
+            // 注册完毕后关闭定时器
+            window.external.StopTimer1();
+        }
+
+        /**
+         * 删除房间.
+         * */
+        function Delete() {
+            // 获取选中的房间号后，回传给C# .
+            var list_unuse_checked = $(".div_head :input[type='checkbox']");
+            var list_room = "";
+            for (var i = 0; i < list_unuse_checked.length; i++) {
+                if (list_unuse_checked[i].checked == true) {
+                    list_room = list_room + list_unuse_checked[i].getAttribute("value") + ",";
+                }
+            }
+
+            if (list_room.length > 0) {
+                // 去掉最后一位逗号.
+                list_room = list_room.substr(list_room, list_room.length - 1);
+            }
+
+            return list_room;
+        }
+
+        /**
+         * 获取选中的房间号.
+         * */
+        function GetSelectItems() {
+            // 获取选中的房间号后，回传给C# .
+            var list_unuse_checked = $(".tag_unuse :input[type='checkbox']");  // 所有空闲状态的多选框
+            var list_review_checked = $(".tag_review :input[type='checkbox']");  // 所有待审状态的多选框
+            var list_fail_checked = $(".tag_fail :input[type='checkbox']");  // 所有审核未通过状态的多选框
+            var list_checked_title = $(".tag_unuse .div_title");    // 空闲状态房间的选中的文字
+            var list_checked_attr = $(".tag_unuse .div_attr");      // 选中的房间属性
+            var list_review_title = $(".tag_review .div_title");       // 待审状态房间的选中的文字
+            var list_fail_title = $(".tag_fail .div_title");       // 审核未通过状态房间的选中的文字
+            var list_room = "";     // 房间的编号
+            var list_roomName = "";
+
+            // 剔除待审和审核未通过状态的房间
+            for (var i = 0; i < list_review_checked.length; i++) {
+                if (list_review_checked[i].checked == true) {
+                    alert("修改房间属性时只能勾选空闲状态的房间");
+                    return;
+                }
+            }
+
+            for (var i = 0; i < list_fail_checked.length; i++) {
+                if (list_fail_checked[i].checked == true) {
+                    alert("修改房间属性时只能勾选空闲状态的房间");
+                    return;
+                }
+            }
+
+            // 将房间号和房价编号
+            for (var i = 0; i < list_unuse_checked.length; i++) {
+                if (list_unuse_checked[i].checked == true) {
+                    // 只处理选中了空闲状态的房间
+                    list_room = list_room + list_unuse_checked[i].getAttribute("value") + ",";
+                    list_roomName = list_roomName + list_checked_attr[i].innerText + list_checked_title[i].innerText + ",";
+                }
+            }
+
+            if (list_room.length > 0) {
+                // 去掉最后一位逗号.
+                list_room = list_room.substr(list_room, list_room.length - 1);
+            }
+
+            if (list_roomName.length > 0) {
+                // 去掉最后一位逗号.
+                list_roomName = list_roomName.substr(list_roomName, list_roomName.length - 1);
+            }
+
+            // 房间号列表 + | + 房间编号列表
+            return list_roomName + "|" + list_room;
+        }
+    </script>
+</body>
+</html>

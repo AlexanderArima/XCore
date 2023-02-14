@@ -36,13 +36,18 @@ namespace XCore.PMS.Winform.ViewModel
         public string Statue { get; set; }
 
         /// <summary>
+        /// 入住人数.
+        /// </summary>
+        public string Number { get; set; }
+
+        /// <summary>
         /// 获取房间列表.
         /// </summary>
         public static Tuple<bool, List<RoomFormViewModel>, string> GetList()
         {
             try
             {
-                var result = HttpService.PostService<XCore.PMS.Winform.VO.RoomFormViewModel_GetSingle.GetListVO>(
+                var result = HttpService.GetService<XCore.PMS.Winform.VO.RoomFormViewModel_GetSingle.GetListVO>(
                    "https://localhost:44384",
                    "Room/GetList");
                 if(result.code == 0)
@@ -56,6 +61,7 @@ namespace XCore.PMS.Winform.ViewModel
                         model.Name = item.Name;
                         model.Type = item.Type;
                         model.Statue = item.Status;
+                        model.Number = item.Number.ToString();
                         list.Add(model);
                     }
 

@@ -211,6 +211,10 @@ namespace XCore.PMS.Winform.Model
                         result = reader.ReadToEnd();
                     }
                 }
+                catch(Exception ex)
+                {
+                    Log4NetHelper.Error("Utils：HttpPost出错：" + ex.Message, ex);
+                }
                 finally
                 {
                     if (stream != null)
