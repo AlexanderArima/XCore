@@ -32,6 +32,7 @@ namespace XCore.PMS.Winform.Control
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GNLKControl));
             this.dSkinPanel3 = new DSkin.Controls.DSkinPanel();
             this.dSkinPanel2 = new DSkin.Controls.DSkinPanel();
+            this.dSkinDateTimePicker1 = new DSkin.Controls.DSkinDateTimePicker();
             this.dSkinButton3 = new DSkin.Controls.DSkinButton();
             this.dSkinButton2 = new DSkin.Controls.DSkinButton();
             this.dSkinButton1 = new DSkin.Controls.DSkinButton();
@@ -51,8 +52,10 @@ namespace XCore.PMS.Winform.Control
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dSkinTextBox1 = new DSkin.Controls.DSkinTextBox();
             this.dSkinLabel1 = new DSkin.Controls.DSkinLabel();
+            this.dSkinLabel8 = new DSkin.Controls.DSkinLabel();
+            this.dSkinLabel9 = new DSkin.Controls.DSkinLabel();
             this.zzlkControl1 = new XCore.PMS.Winform.Control.ZZLKControl();
-            this.dSkinDateTimePicker1 = new DSkin.Controls.DSkinDateTimePicker();
+            this.dSkinLabel10 = new DSkin.Controls.DSkinLabel();
             this.dSkinPanel3.SuspendLayout();
             this.dSkinPanel2.SuspendLayout();
             this.dSkinPanel4.SuspendLayout();
@@ -72,6 +75,9 @@ namespace XCore.PMS.Winform.Control
             // dSkinPanel2
             // 
             this.dSkinPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.dSkinPanel2.Controls.Add(this.dSkinLabel10);
+            this.dSkinPanel2.Controls.Add(this.dSkinLabel9);
+            this.dSkinPanel2.Controls.Add(this.dSkinLabel8);
             this.dSkinPanel2.Controls.Add(this.dSkinDateTimePicker1);
             this.dSkinPanel2.Controls.Add(this.dSkinButton3);
             this.dSkinPanel2.Controls.Add(this.dSkinButton2);
@@ -97,6 +103,13 @@ namespace XCore.PMS.Winform.Control
             this.dSkinPanel2.TabIndex = 2;
             this.dSkinPanel2.Text = "dSkinPanel2";
             // 
+            // dSkinDateTimePicker1
+            // 
+            this.dSkinDateTimePicker1.Location = new System.Drawing.Point(279, 50);
+            this.dSkinDateTimePicker1.Name = "dSkinDateTimePicker1";
+            this.dSkinDateTimePicker1.Size = new System.Drawing.Size(121, 21);
+            this.dSkinDateTimePicker1.TabIndex = 18;
+            // 
             // dSkinButton3
             // 
             this.dSkinButton3.AdaptImage = true;
@@ -108,14 +121,14 @@ namespace XCore.PMS.Winform.Control
             this.dSkinButton3.HoverColor = System.Drawing.Color.Empty;
             this.dSkinButton3.HoverImage = null;
             this.dSkinButton3.IsPureColor = false;
-            this.dSkinButton3.Location = new System.Drawing.Point(217, 126);
+            this.dSkinButton3.Location = new System.Drawing.Point(548, 130);
             this.dSkinButton3.Name = "dSkinButton3";
             this.dSkinButton3.NormalImage = null;
             this.dSkinButton3.PressColor = System.Drawing.Color.Empty;
             this.dSkinButton3.PressedImage = null;
             this.dSkinButton3.Radius = 10;
             this.dSkinButton3.ShowButtonBorder = true;
-            this.dSkinButton3.Size = new System.Drawing.Size(85, 33);
+            this.dSkinButton3.Size = new System.Drawing.Size(60, 30);
             this.dSkinButton3.TabIndex = 17;
             this.dSkinButton3.Text = "入住";
             this.dSkinButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -132,14 +145,14 @@ namespace XCore.PMS.Winform.Control
             this.dSkinButton2.HoverColor = System.Drawing.Color.Empty;
             this.dSkinButton2.HoverImage = null;
             this.dSkinButton2.IsPureColor = false;
-            this.dSkinButton2.Location = new System.Drawing.Point(112, 126);
+            this.dSkinButton2.Location = new System.Drawing.Point(482, 130);
             this.dSkinButton2.Name = "dSkinButton2";
             this.dSkinButton2.NormalImage = null;
             this.dSkinButton2.PressColor = System.Drawing.Color.Empty;
             this.dSkinButton2.PressedImage = null;
             this.dSkinButton2.Radius = 10;
             this.dSkinButton2.ShowButtonBorder = true;
-            this.dSkinButton2.Size = new System.Drawing.Size(85, 33);
+            this.dSkinButton2.Size = new System.Drawing.Size(60, 30);
             this.dSkinButton2.TabIndex = 16;
             this.dSkinButton2.Text = "预定";
             this.dSkinButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -157,14 +170,14 @@ namespace XCore.PMS.Winform.Control
             this.dSkinButton1.HoverColor = System.Drawing.Color.Empty;
             this.dSkinButton1.HoverImage = null;
             this.dSkinButton1.IsPureColor = false;
-            this.dSkinButton1.Location = new System.Drawing.Point(9, 126);
+            this.dSkinButton1.Location = new System.Drawing.Point(416, 130);
             this.dSkinButton1.Name = "dSkinButton1";
             this.dSkinButton1.NormalImage = null;
             this.dSkinButton1.PressColor = System.Drawing.Color.Empty;
             this.dSkinButton1.PressedImage = null;
             this.dSkinButton1.Radius = 10;
             this.dSkinButton1.ShowButtonBorder = true;
-            this.dSkinButton1.Size = new System.Drawing.Size(85, 33);
+            this.dSkinButton1.Size = new System.Drawing.Size(60, 30);
             this.dSkinButton1.TabIndex = 15;
             this.dSkinButton1.Text = "重置";
             this.dSkinButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -177,11 +190,13 @@ namespace XCore.PMS.Winform.Control
             this.dSkinPictureBox1.Borders.LeftColor = System.Drawing.Color.Gray;
             this.dSkinPictureBox1.Borders.RightColor = System.Drawing.Color.Gray;
             this.dSkinPictureBox1.Borders.TopColor = System.Drawing.Color.Gray;
-            this.dSkinPictureBox1.Image = null;
-            this.dSkinPictureBox1.Images = null;
-            this.dSkinPictureBox1.Location = new System.Drawing.Point(645, 9);
+            this.dSkinPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("dSkinPictureBox1.Image")));
+            this.dSkinPictureBox1.Images = new System.Drawing.Image[] {
+        ((System.Drawing.Image)(((System.Drawing.Image)(resources.GetObject("dSkinPictureBox1.Images")))))};
+            this.dSkinPictureBox1.Location = new System.Drawing.Point(645, 8);
             this.dSkinPictureBox1.Name = "dSkinPictureBox1";
             this.dSkinPictureBox1.Size = new System.Drawing.Size(100, 120);
+            this.dSkinPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.dSkinPictureBox1.TabIndex = 14;
             this.dSkinPictureBox1.Text = "dSkinPictureBox1";
             // 
@@ -355,6 +370,22 @@ namespace XCore.PMS.Winform.Control
             this.dSkinLabel1.TabIndex = 0;
             this.dSkinLabel1.Text = "姓名";
             // 
+            // dSkinLabel8
+            // 
+            this.dSkinLabel8.Location = new System.Drawing.Point(428, 91);
+            this.dSkinLabel8.Name = "dSkinLabel8";
+            this.dSkinLabel8.Size = new System.Drawing.Size(54, 16);
+            this.dSkinLabel8.TabIndex = 19;
+            this.dSkinLabel8.Text = "入住时间";
+            // 
+            // dSkinLabel9
+            // 
+            this.dSkinLabel9.Location = new System.Drawing.Point(487, 91);
+            this.dSkinLabel9.Name = "dSkinLabel9";
+            this.dSkinLabel9.Size = new System.Drawing.Size(122, 14);
+            this.dSkinLabel9.TabIndex = 20;
+            this.dSkinLabel9.Text = "2022-01-01 09:09:00";
+            // 
             // zzlkControl1
             // 
             this.zzlkControl1.BackColor = System.Drawing.Color.White;
@@ -366,12 +397,13 @@ namespace XCore.PMS.Winform.Control
             this.zzlkControl1.Size = new System.Drawing.Size(800, 342);
             this.zzlkControl1.TabIndex = 0;
             // 
-            // dSkinDateTimePicker1
+            // dSkinLabel10
             // 
-            this.dSkinDateTimePicker1.Location = new System.Drawing.Point(279, 50);
-            this.dSkinDateTimePicker1.Name = "dSkinDateTimePicker1";
-            this.dSkinDateTimePicker1.Size = new System.Drawing.Size(121, 21);
-            this.dSkinDateTimePicker1.TabIndex = 18;
+            this.dSkinLabel10.Location = new System.Drawing.Point(673, 143);
+            this.dSkinLabel10.Name = "dSkinLabel10";
+            this.dSkinLabel10.Size = new System.Drawing.Size(42, 16);
+            this.dSkinLabel10.TabIndex = 21;
+            this.dSkinLabel10.Text = "证件照";
             // 
             // GNLKControl
             // 
@@ -416,5 +448,8 @@ namespace XCore.PMS.Winform.Control
         private DSkin.Controls.DSkinLabel dSkinLabel1;
         private ZZLKControl zzlkControl1;
         private DSkin.Controls.DSkinDateTimePicker dSkinDateTimePicker1;
+        private DSkin.Controls.DSkinLabel dSkinLabel8;
+        private DSkin.Controls.DSkinLabel dSkinLabel9;
+        private DSkin.Controls.DSkinLabel dSkinLabel10;
     }
 }
