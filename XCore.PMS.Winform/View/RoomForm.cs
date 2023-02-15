@@ -86,12 +86,14 @@ namespace XCore.PMS.Winform.View
                     // 脏房
                     sfzz_classname = "div_dirty";
                     sfzz_tagname = "tag_dirty";
+                    kxfj_checkbox = "<input type='checkbox' value='" + item.ID + "' />";
                 }
                 else if (item.Statue == "4")
                 {
                     // 维修
                     sfzz_classname = "div_repair";
                     sfzz_tagname = "tag_repair";
+                    kxfj_checkbox = "<input type='checkbox' value='" + item.ID + "' />";
                 }
 
                 var type = list_roomtype.Single(m => m.actualName == item.Type).displayName.Substring(0, 1);
@@ -123,15 +125,24 @@ namespace XCore.PMS.Winform.View
 
         private void 修改房间ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // 这里需要获取选中的房间id
             RoomUpdateForm form = new RoomUpdateForm("3");
             if(form.ShowDialog() == DialogResult.OK)
             {
                 form.Dispose();
             }
+
+            this.Query(null, null);
         }
 
         private void 删除房间ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // 这里需要获取选中的房间id
+            if (MessageBox.Show("确定删除吗？", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+            {
+                return;
+            }
+
             var result = RoomFormViewModel.Delete("4");
             if(result.Item1 == true)
             {

@@ -127,7 +127,41 @@ namespace XCore.PMS.Winform.ViewModel
             }
             catch (Exception ex)
             {
-                Log4NetHelper.Error("RoomFormViewModel：GetList出错：" + ex.Message, ex);
+                Log4NetHelper.Error("RoomFormViewModel：Add出错：" + ex.Message, ex);
+                return new Tuple<bool, string>(false, "系统异常");
+            }
+        }
+
+        /// <summary>
+        /// 修改房间
+        /// </summary>
+        /// <param name="name">房间名称</param>
+        /// <param name="typeid">房间类型</param>
+        /// <returns></returns>
+        public static Tuple<bool, string> Update(string id, string name, string type, string status)
+        {
+            try
+            {
+                JObject param = new JObject();
+                param.Add(new JProperty("Id", id));
+                param.Add(new JProperty("Name", name));
+                param.Add(new JProperty("Type", type));
+                param.Add(new JProperty("Status", status));
+                var result = HttpService.PostService<ReceiveObject>(
+                   "https://localhost:44384/Room/UpdateRoom",
+                   param.ToString());
+                if (result.code != 0)
+                {
+                    return new Tuple<bool, string>(false, result.msg);
+                }
+                else
+                {
+                    return new Tuple<bool, string>(true, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log4NetHelper.Error("RoomFormViewModel：Update出错：" + ex.Message, ex);
                 return new Tuple<bool, string>(false, "系统异常");
             }
         }

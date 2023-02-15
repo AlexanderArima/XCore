@@ -38,6 +38,27 @@ namespace XCore.PMS.Winform.View
                 comboBox1.ValueMember = "actualName";        // value值。
             }
 
+            // 初始化时加载房间状态数据字典
+            var list = DictionaryInfo_RoomStatus.list_roomstatus;
+            var list_after = new List<DictionaryInfo_RoomStatus>();
+            list.ForEach(m =>
+            {
+                if (m.displayName.Equals("使用中") == false)
+                {
+                    list_after.Add(new DictionaryInfo_RoomStatus()
+                    {
+                        actualName = m.actualName,
+                        displayName = m.displayName
+                    });
+                }
+            });
+            comboBox2.DataSource = list_after;
+            if (DictionaryInfo_RoomStatus.list_roomstatus != null && DictionaryInfo_RoomStatus.list_roomstatus.Count > 0)
+            {
+                comboBox2.DisplayMember = "displayName";  // 显示出来的。Text
+                comboBox2.ValueMember = "actualName";        // value值。
+            }
+
             var model = RoomFormViewModel.GetSingle(this.roomid);
             if(model.Item1 == true)
             {
@@ -57,6 +78,25 @@ namespace XCore.PMS.Winform.View
         private void RoomUpdateForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void dSkinButton1_Click(object sender, EventArgs e)
+        {
+            var name = this.dSkinTextBox1.Text;
+            var type = this.comboBox1.SelectedValue;
+            var status = this.comboBox2.SelectedValue;
+            var result = RoomFormViewModel.Update(this.roomid, name, type.ToString(), status.ToString());
+            if (result.Item1 == false)
+            {
+                MessageBox.Show(result.Item2, "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                MessageBox.Show("修改成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                return;
+            }
         }
     }
 }

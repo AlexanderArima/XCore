@@ -70,11 +70,11 @@ namespace XCore.PMS.WebAPI.Controllers
         /// <param name="tRoom"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> UpdateRoom(TRoom tRoom)
+        public async Task<IActionResult> UpdateRoom(UpdateRoomVO room)
         {
             try
             {
-                var obj = _context.TRooms.Where(m => m.Id == tRoom.Id);
+                var obj = _context.TRooms.Where(m => m.Id == room.Id);
                 if(obj == null)
                 {
                     return Ok(new ReceiveObject()
@@ -84,6 +84,16 @@ namespace XCore.PMS.WebAPI.Controllers
                     });
                 }
 
+                var tRoom = await _context.TRooms.FindAsync(room.Id);
+                if (tRoom == null)
+                {
+                    return NotFound();
+                }
+
+                tRoom.Id = room.Id;
+                tRoom.Name = room.Name;
+                tRoom.Type = room.Type;
+                tRoom.Status = room.Status;
                 _context.Update<TRoom>(tRoom);
                 await _context.SaveChangesAsync();
                 return Ok(new ReceiveObject()
