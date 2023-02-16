@@ -31,7 +31,14 @@ namespace XCore.PMS.Winform.Control
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GNLKControl));
             this.dSkinPanel3 = new DSkin.Controls.DSkinPanel();
+            this.dSkinTabControl1 = new DSkin.Controls.DSkinTabControl();
+            this.dSkinTabPage1 = new DSkin.Controls.DSkinTabPage();
+            this.dSkinTabPage2 = new DSkin.Controls.DSkinTabPage();
+            this.zzlkControl1 = new XCore.PMS.Winform.Control.ZZLKControl();
             this.dSkinPanel2 = new DSkin.Controls.DSkinPanel();
+            this.dSkinLabel10 = new DSkin.Controls.DSkinLabel();
+            this.dSkinLabel9 = new DSkin.Controls.DSkinLabel();
+            this.dSkinLabel8 = new DSkin.Controls.DSkinLabel();
             this.dSkinDateTimePicker1 = new DSkin.Controls.DSkinDateTimePicker();
             this.dSkinButton3 = new DSkin.Controls.DSkinButton();
             this.dSkinButton2 = new DSkin.Controls.DSkinButton();
@@ -52,11 +59,9 @@ namespace XCore.PMS.Winform.Control
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dSkinTextBox1 = new DSkin.Controls.DSkinTextBox();
             this.dSkinLabel1 = new DSkin.Controls.DSkinLabel();
-            this.dSkinLabel8 = new DSkin.Controls.DSkinLabel();
-            this.dSkinLabel9 = new DSkin.Controls.DSkinLabel();
-            this.zzlkControl1 = new XCore.PMS.Winform.Control.ZZLKControl();
-            this.dSkinLabel10 = new DSkin.Controls.DSkinLabel();
             this.dSkinPanel3.SuspendLayout();
+            this.dSkinTabControl1.SuspendLayout();
+            this.dSkinTabPage2.SuspendLayout();
             this.dSkinPanel2.SuspendLayout();
             this.dSkinPanel4.SuspendLayout();
             this.SuspendLayout();
@@ -64,13 +69,79 @@ namespace XCore.PMS.Winform.Control
             // dSkinPanel3
             // 
             this.dSkinPanel3.BackColor = System.Drawing.Color.Transparent;
-            this.dSkinPanel3.Controls.Add(this.zzlkControl1);
+            this.dSkinPanel3.Controls.Add(this.dSkinTabControl1);
             this.dSkinPanel3.Location = new System.Drawing.Point(0, 256);
             this.dSkinPanel3.Name = "dSkinPanel3";
             this.dSkinPanel3.RightBottom = ((System.Drawing.Image)(resources.GetObject("dSkinPanel3.RightBottom")));
-            this.dSkinPanel3.Size = new System.Drawing.Size(800, 342);
+            this.dSkinPanel3.Size = new System.Drawing.Size(1024, 342);
             this.dSkinPanel3.TabIndex = 3;
             this.dSkinPanel3.Text = "dSkinPanel3";
+            // 
+            // dSkinTabControl1
+            // 
+            this.dSkinTabControl1.BitmapCache = false;
+            this.dSkinTabControl1.Controls.Add(this.dSkinTabPage1);
+            this.dSkinTabControl1.Controls.Add(this.dSkinTabPage2);
+            this.dSkinTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dSkinTabControl1.HoverBackColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Transparent,
+        System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))))};
+            this.dSkinTabControl1.ItemBackgroundImage = null;
+            this.dSkinTabControl1.ItemBackgroundImageHover = null;
+            this.dSkinTabControl1.ItemBackgroundImageSelected = null;
+            this.dSkinTabControl1.ItemSize = new System.Drawing.Size(96, 33);
+            this.dSkinTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.dSkinTabControl1.Name = "dSkinTabControl1";
+            this.dSkinTabControl1.NormalBackColors = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))))};
+            this.dSkinTabControl1.PageImagePosition = DSkin.Controls.ePageImagePosition.Left;
+            this.dSkinTabControl1.SelectedBackColors = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(186)))), ((int)(((byte)(233))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))))};
+            this.dSkinTabControl1.Size = new System.Drawing.Size(1024, 342);
+            this.dSkinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.dSkinTabControl1.TabIndex = 1;
+            this.dSkinTabControl1.UpdownBtnArrowNormalColor = System.Drawing.Color.Black;
+            this.dSkinTabControl1.UpdownBtnArrowPressColor = System.Drawing.Color.Gray;
+            this.dSkinTabControl1.UpdownBtnBackColor = System.Drawing.Color.White;
+            this.dSkinTabControl1.UpdownBtnBorderColor = System.Drawing.Color.Black;
+            // 
+            // dSkinTabPage1
+            // 
+            this.dSkinTabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.dSkinTabPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dSkinTabPage1.Location = new System.Drawing.Point(0, 33);
+            this.dSkinTabPage1.Name = "dSkinTabPage1";
+            this.dSkinTabPage1.Size = new System.Drawing.Size(1024, 309);
+            this.dSkinTabPage1.TabIndex = 0;
+            this.dSkinTabPage1.TabItemImage = null;
+            this.dSkinTabPage1.Text = "预订单查询";
+            this.dSkinTabPage1.Visible = false;
+            // 
+            // dSkinTabPage2
+            // 
+            this.dSkinTabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.dSkinTabPage2.Controls.Add(this.zzlkControl1);
+            this.dSkinTabPage2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dSkinTabPage2.Location = new System.Drawing.Point(0, 33);
+            this.dSkinTabPage2.Name = "dSkinTabPage2";
+            this.dSkinTabPage2.Size = new System.Drawing.Size(1024, 309);
+            this.dSkinTabPage2.TabIndex = 1;
+            this.dSkinTabPage2.TabItemImage = null;
+            this.dSkinTabPage2.Text = "在住查询";
+            this.dSkinTabPage2.Visible = false;
+            // 
+            // zzlkControl1
+            // 
+            this.zzlkControl1.BackColor = System.Drawing.Color.White;
+            this.zzlkControl1.BitmapCache = false;
+            this.zzlkControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zzlkControl1.Location = new System.Drawing.Point(0, 0);
+            this.zzlkControl1.Name = "zzlkControl1";
+            this.zzlkControl1.RightBottom = ((System.Drawing.Image)(resources.GetObject("zzlkControl1.RightBottom")));
+            this.zzlkControl1.Size = new System.Drawing.Size(1024, 309);
+            this.zzlkControl1.TabIndex = 1;
             // 
             // dSkinPanel2
             // 
@@ -99,9 +170,33 @@ namespace XCore.PMS.Winform.Control
             this.dSkinPanel2.Location = new System.Drawing.Point(0, 0);
             this.dSkinPanel2.Name = "dSkinPanel2";
             this.dSkinPanel2.RightBottom = ((System.Drawing.Image)(resources.GetObject("dSkinPanel2.RightBottom")));
-            this.dSkinPanel2.Size = new System.Drawing.Size(800, 248);
+            this.dSkinPanel2.Size = new System.Drawing.Size(1021, 248);
             this.dSkinPanel2.TabIndex = 2;
             this.dSkinPanel2.Text = "dSkinPanel2";
+            // 
+            // dSkinLabel10
+            // 
+            this.dSkinLabel10.Location = new System.Drawing.Point(673, 143);
+            this.dSkinLabel10.Name = "dSkinLabel10";
+            this.dSkinLabel10.Size = new System.Drawing.Size(42, 16);
+            this.dSkinLabel10.TabIndex = 21;
+            this.dSkinLabel10.Text = "证件照";
+            // 
+            // dSkinLabel9
+            // 
+            this.dSkinLabel9.Location = new System.Drawing.Point(487, 91);
+            this.dSkinLabel9.Name = "dSkinLabel9";
+            this.dSkinLabel9.Size = new System.Drawing.Size(122, 14);
+            this.dSkinLabel9.TabIndex = 20;
+            this.dSkinLabel9.Text = "2022-01-01 09:09:00";
+            // 
+            // dSkinLabel8
+            // 
+            this.dSkinLabel8.Location = new System.Drawing.Point(428, 91);
+            this.dSkinLabel8.Name = "dSkinLabel8";
+            this.dSkinLabel8.Size = new System.Drawing.Size(54, 16);
+            this.dSkinLabel8.TabIndex = 19;
+            this.dSkinLabel8.Text = "入住时间";
             // 
             // dSkinDateTimePicker1
             // 
@@ -370,41 +465,6 @@ namespace XCore.PMS.Winform.Control
             this.dSkinLabel1.TabIndex = 0;
             this.dSkinLabel1.Text = "姓名";
             // 
-            // dSkinLabel8
-            // 
-            this.dSkinLabel8.Location = new System.Drawing.Point(428, 91);
-            this.dSkinLabel8.Name = "dSkinLabel8";
-            this.dSkinLabel8.Size = new System.Drawing.Size(54, 16);
-            this.dSkinLabel8.TabIndex = 19;
-            this.dSkinLabel8.Text = "入住时间";
-            // 
-            // dSkinLabel9
-            // 
-            this.dSkinLabel9.Location = new System.Drawing.Point(487, 91);
-            this.dSkinLabel9.Name = "dSkinLabel9";
-            this.dSkinLabel9.Size = new System.Drawing.Size(122, 14);
-            this.dSkinLabel9.TabIndex = 20;
-            this.dSkinLabel9.Text = "2022-01-01 09:09:00";
-            // 
-            // zzlkControl1
-            // 
-            this.zzlkControl1.BackColor = System.Drawing.Color.White;
-            this.zzlkControl1.BitmapCache = false;
-            this.zzlkControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.zzlkControl1.Location = new System.Drawing.Point(0, 0);
-            this.zzlkControl1.Name = "zzlkControl1";
-            this.zzlkControl1.RightBottom = ((System.Drawing.Image)(resources.GetObject("zzlkControl1.RightBottom")));
-            this.zzlkControl1.Size = new System.Drawing.Size(800, 342);
-            this.zzlkControl1.TabIndex = 0;
-            // 
-            // dSkinLabel10
-            // 
-            this.dSkinLabel10.Location = new System.Drawing.Point(673, 143);
-            this.dSkinLabel10.Name = "dSkinLabel10";
-            this.dSkinLabel10.Size = new System.Drawing.Size(42, 16);
-            this.dSkinLabel10.TabIndex = 21;
-            this.dSkinLabel10.Text = "证件照";
-            // 
             // GNLKControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -413,8 +473,10 @@ namespace XCore.PMS.Winform.Control
             this.Controls.Add(this.dSkinPanel3);
             this.Controls.Add(this.dSkinPanel2);
             this.Name = "GNLKControl";
-            this.Size = new System.Drawing.Size(800, 600);
+            this.Size = new System.Drawing.Size(1024, 600);
             this.dSkinPanel3.ResumeLayout(false);
+            this.dSkinTabControl1.ResumeLayout(false);
+            this.dSkinTabPage2.ResumeLayout(false);
             this.dSkinPanel2.ResumeLayout(false);
             this.dSkinPanel2.PerformLayout();
             this.dSkinPanel4.ResumeLayout(false);
@@ -446,10 +508,13 @@ namespace XCore.PMS.Winform.Control
         private System.Windows.Forms.ComboBox comboBox1;
         private DSkin.Controls.DSkinTextBox dSkinTextBox1;
         private DSkin.Controls.DSkinLabel dSkinLabel1;
-        private ZZLKControl zzlkControl1;
         private DSkin.Controls.DSkinDateTimePicker dSkinDateTimePicker1;
         private DSkin.Controls.DSkinLabel dSkinLabel8;
         private DSkin.Controls.DSkinLabel dSkinLabel9;
         private DSkin.Controls.DSkinLabel dSkinLabel10;
+        private DSkin.Controls.DSkinTabControl dSkinTabControl1;
+        private DSkin.Controls.DSkinTabPage dSkinTabPage1;
+        private DSkin.Controls.DSkinTabPage dSkinTabPage2;
+        private ZZLKControl zzlkControl1;
     }
 }

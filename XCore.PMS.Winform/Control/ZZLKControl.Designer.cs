@@ -36,25 +36,26 @@ namespace XCore.PMS.Winform.Control
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ZZLKControl));
             this.dSkinDataGridView1 = new DSkin.Controls.DSkinDataGridView();
-            this.zZLKControlViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dSkinPanel1 = new DSkin.Controls.DSkinPanel();
             this.dSkinButton2 = new DSkin.Controls.DSkinButton();
             this.dSkinButton1 = new DSkin.Controls.DSkinButton();
             this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YWX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YWM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fJHMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zJLXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rZSJDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zJHMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mZDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gJDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zZLKControlViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dSkinDataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zZLKControlViewModelBindingSource)).BeginInit();
             this.dSkinPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zZLKControlViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dSkinDataGridView1
@@ -114,22 +115,18 @@ namespace XCore.PMS.Winform.Control
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dSkinDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dSkinDataGridView1.RowTemplate.Height = 23;
-            this.dSkinDataGridView1.Size = new System.Drawing.Size(800, 256);
+            this.dSkinDataGridView1.Size = new System.Drawing.Size(1021, 256);
             this.dSkinDataGridView1.TabIndex = 0;
             this.dSkinDataGridView1.TitleBack = null;
             this.dSkinDataGridView1.TitleBackColorBegin = System.Drawing.Color.White;
             this.dSkinDataGridView1.TitleBackColorEnd = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(242)))));
-            // 
-            // zZLKControlViewModelBindingSource
-            // 
-            this.zZLKControlViewModelBindingSource.DataSource = typeof(XCore.PMS.Winform.ViewModel.ZZLKControlViewModel);
             // 
             // dSkinPanel1
             // 
             this.dSkinPanel1.BackColor = System.Drawing.Color.Transparent;
             this.dSkinPanel1.Controls.Add(this.dSkinButton2);
             this.dSkinPanel1.Controls.Add(this.dSkinButton1);
-            this.dSkinPanel1.Location = new System.Drawing.Point(269, 259);
+            this.dSkinPanel1.Location = new System.Drawing.Point(494, 257);
             this.dSkinPanel1.Name = "dSkinPanel1";
             this.dSkinPanel1.RightBottom = ((System.Drawing.Image)(resources.GetObject("dSkinPanel1.RightBottom")));
             this.dSkinPanel1.Size = new System.Drawing.Size(527, 40);
@@ -153,7 +150,7 @@ namespace XCore.PMS.Winform.Control
             this.dSkinButton2.PressedImage = null;
             this.dSkinButton2.Radius = 10;
             this.dSkinButton2.ShowButtonBorder = true;
-            this.dSkinButton2.Size = new System.Drawing.Size(69, 33);
+            this.dSkinButton2.Size = new System.Drawing.Size(60, 30);
             this.dSkinButton2.TabIndex = 1;
             this.dSkinButton2.Text = "换房";
             this.dSkinButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -170,14 +167,14 @@ namespace XCore.PMS.Winform.Control
             this.dSkinButton1.HoverColor = System.Drawing.Color.Empty;
             this.dSkinButton1.HoverImage = null;
             this.dSkinButton1.IsPureColor = false;
-            this.dSkinButton1.Location = new System.Drawing.Point(378, 3);
+            this.dSkinButton1.Location = new System.Drawing.Point(389, 3);
             this.dSkinButton1.Name = "dSkinButton1";
             this.dSkinButton1.NormalImage = null;
             this.dSkinButton1.PressColor = System.Drawing.Color.Empty;
             this.dSkinButton1.PressedImage = null;
             this.dSkinButton1.Radius = 10;
             this.dSkinButton1.ShowButtonBorder = true;
-            this.dSkinButton1.Size = new System.Drawing.Size(71, 33);
+            this.dSkinButton1.Size = new System.Drawing.Size(60, 30);
             this.dSkinButton1.TabIndex = 0;
             this.dSkinButton1.Text = "退房";
             this.dSkinButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -199,6 +196,22 @@ namespace XCore.PMS.Winform.Control
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
+            // YWX
+            // 
+            this.YWX.DataPropertyName = "YWX";
+            this.YWX.HeaderText = "英文姓";
+            this.YWX.Name = "YWX";
+            this.YWX.ReadOnly = true;
+            this.YWX.Width = 80;
+            // 
+            // YWM
+            // 
+            this.YWM.DataPropertyName = "YWM";
+            this.YWM.HeaderText = "英文名";
+            this.YWM.Name = "YWM";
+            this.YWM.ReadOnly = true;
+            this.YWM.Width = 80;
+            // 
             // xMDataGridViewTextBoxColumn
             // 
             this.xMDataGridViewTextBoxColumn.DataPropertyName = "XM";
@@ -215,20 +228,6 @@ namespace XCore.PMS.Winform.Control
             this.xBDataGridViewTextBoxColumn.ReadOnly = true;
             this.xBDataGridViewTextBoxColumn.Width = 40;
             // 
-            // YWX
-            // 
-            this.YWX.DataPropertyName = "YWX";
-            this.YWX.HeaderText = "英文姓";
-            this.YWX.Name = "YWX";
-            this.YWX.ReadOnly = true;
-            // 
-            // YWM
-            // 
-            this.YWM.DataPropertyName = "YWM";
-            this.YWM.HeaderText = "英文名";
-            this.YWM.Name = "YWM";
-            this.YWM.ReadOnly = true;
-            // 
             // fJHMDataGridViewTextBoxColumn
             // 
             this.fJHMDataGridViewTextBoxColumn.DataPropertyName = "FJHM";
@@ -243,6 +242,7 @@ namespace XCore.PMS.Winform.Control
             this.zJLXDataGridViewTextBoxColumn.HeaderText = "证件类型";
             this.zJLXDataGridViewTextBoxColumn.Name = "zJLXDataGridViewTextBoxColumn";
             this.zJLXDataGridViewTextBoxColumn.ReadOnly = true;
+            this.zJLXDataGridViewTextBoxColumn.Width = 120;
             // 
             // rZSJDataGridViewTextBoxColumn
             // 
@@ -274,22 +274,37 @@ namespace XCore.PMS.Winform.Control
             this.gJDataGridViewTextBoxColumn.HeaderText = "国籍";
             this.gJDataGridViewTextBoxColumn.Name = "gJDataGridViewTextBoxColumn";
             this.gJDataGridViewTextBoxColumn.ReadOnly = true;
-            this.gJDataGridViewTextBoxColumn.Width = 60;
+            this.gJDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // zZLKControlViewModelBindingSource
+            // 
+            this.zZLKControlViewModelBindingSource.DataSource = typeof(XCore.PMS.Winform.ViewModel.ZZLKControlViewModel);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(54, 8);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // ZZLKControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.dSkinPanel1);
             this.Controls.Add(this.dSkinDataGridView1);
             this.Name = "ZZLKControl";
-            this.Size = new System.Drawing.Size(800, 300);
+            this.Size = new System.Drawing.Size(1024, 300);
             this.Load += new System.EventHandler(this.ZZLKControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dSkinDataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zZLKControlViewModelBindingSource)).EndInit();
             this.dSkinPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.zZLKControlViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -312,5 +327,6 @@ namespace XCore.PMS.Winform.Control
         private System.Windows.Forms.DataGridViewTextBoxColumn zJHMDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mZDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn gJDataGridViewTextBoxColumn;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

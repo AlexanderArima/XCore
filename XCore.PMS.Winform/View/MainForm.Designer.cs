@@ -33,10 +33,11 @@ namespace XCore.PMS.Winform.View
             this.dSkinPanel1 = new DSkin.Controls.DSkinPanel();
             this.dSkinTabControl1 = new DSkin.Controls.DSkinTabControl();
             this.dSkinTabPage1 = new DSkin.Controls.DSkinTabPage();
-            this.gnlkControl1 = new XCore.PMS.Winform.Control.GNLKControl();
             this.dSkinTabPage2 = new DSkin.Controls.DSkinTabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.房间管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.系统设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gnlkControl1 = new XCore.PMS.Winform.Control.GNLKControl();
             this.dSkinPanel1.SuspendLayout();
             this.dSkinTabControl1.SuspendLayout();
             this.dSkinTabPage1.SuspendLayout();
@@ -47,10 +48,10 @@ namespace XCore.PMS.Winform.View
             // 
             this.dSkinPanel1.BackColor = System.Drawing.Color.Transparent;
             this.dSkinPanel1.Controls.Add(this.dSkinTabControl1);
-            this.dSkinPanel1.Location = new System.Drawing.Point(7, 69);
+            this.dSkinPanel1.Location = new System.Drawing.Point(0, 69);
             this.dSkinPanel1.Name = "dSkinPanel1";
             this.dSkinPanel1.RightBottom = ((System.Drawing.Image)(resources.GetObject("dSkinPanel1.RightBottom")));
-            this.dSkinPanel1.Size = new System.Drawing.Size(786, 624);
+            this.dSkinPanel1.Size = new System.Drawing.Size(1024, 624);
             this.dSkinPanel1.TabIndex = 0;
             this.dSkinPanel1.Text = "dSkinPanel1";
             // 
@@ -76,7 +77,7 @@ namespace XCore.PMS.Winform.View
             this.dSkinTabControl1.SelectedBackColors = new System.Drawing.Color[] {
         System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(186)))), ((int)(((byte)(233))))),
         System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))))};
-            this.dSkinTabControl1.Size = new System.Drawing.Size(786, 624);
+            this.dSkinTabControl1.Size = new System.Drawing.Size(1024, 624);
             this.dSkinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.dSkinTabControl1.TabIndex = 0;
             this.dSkinTabControl1.UpdownBtnArrowNormalColor = System.Drawing.Color.Black;
@@ -91,20 +92,11 @@ namespace XCore.PMS.Winform.View
             this.dSkinTabPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dSkinTabPage1.Location = new System.Drawing.Point(0, 33);
             this.dSkinTabPage1.Name = "dSkinTabPage1";
-            this.dSkinTabPage1.Size = new System.Drawing.Size(786, 591);
+            this.dSkinTabPage1.Size = new System.Drawing.Size(1024, 591);
             this.dSkinTabPage1.TabIndex = 0;
             this.dSkinTabPage1.TabItemImage = null;
             this.dSkinTabPage1.Text = "国内旅客";
             this.dSkinTabPage1.Visible = false;
-            // 
-            // gnlkControl1
-            // 
-            this.gnlkControl1.BackColor = System.Drawing.Color.White;
-            this.gnlkControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gnlkControl1.Location = new System.Drawing.Point(0, 0);
-            this.gnlkControl1.Name = "gnlkControl1";
-            this.gnlkControl1.Size = new System.Drawing.Size(786, 591);
-            this.gnlkControl1.TabIndex = 0;
             // 
             // dSkinTabPage2
             // 
@@ -121,10 +113,11 @@ namespace XCore.PMS.Winform.View
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.房间管理ToolStripMenuItem});
+            this.房间管理ToolStripMenuItem,
+            this.系统设置ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(4, 34);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(792, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1016, 25);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -135,6 +128,21 @@ namespace XCore.PMS.Winform.View
             this.房间管理ToolStripMenuItem.Text = "房间管理";
             this.房间管理ToolStripMenuItem.Click += new System.EventHandler(this.房间管理ToolStripMenuItem_Click_2);
             // 
+            // 系统设置ToolStripMenuItem
+            // 
+            this.系统设置ToolStripMenuItem.Name = "系统设置ToolStripMenuItem";
+            this.系统设置ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.系统设置ToolStripMenuItem.Text = "系统设置";
+            // 
+            // gnlkControl1
+            // 
+            this.gnlkControl1.BackColor = System.Drawing.Color.White;
+            this.gnlkControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gnlkControl1.Location = new System.Drawing.Point(0, 0);
+            this.gnlkControl1.Name = "gnlkControl1";
+            this.gnlkControl1.Size = new System.Drawing.Size(1024, 591);
+            this.gnlkControl1.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -143,7 +151,7 @@ namespace XCore.PMS.Winform.View
             this.BorderColor = System.Drawing.Color.Gray;
             this.CanResize = false;
             this.CaptionOffset = new System.Drawing.Point(2, 2);
-            this.ClientSize = new System.Drawing.Size(800, 700);
+            this.ClientSize = new System.Drawing.Size(1024, 700);
             this.Controls.Add(this.dSkinPanel1);
             this.Controls.Add(this.menuStrip1);
             this.DoubleClickMaximized = false;
@@ -155,7 +163,7 @@ namespace XCore.PMS.Winform.View
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.ShowIcon = false;
-            this.Text = "主界面";
+            this.Text = "武汉洱湾酒店管理系统";
             this.dSkinPanel1.ResumeLayout(false);
             this.dSkinTabControl1.ResumeLayout(false);
             this.dSkinTabPage1.ResumeLayout(false);
@@ -175,5 +183,6 @@ namespace XCore.PMS.Winform.View
         private Control.GNLKControl gnlkControl1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 房间管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 系统设置ToolStripMenuItem;
     }
 }

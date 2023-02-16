@@ -70,6 +70,12 @@
     <Compile Include="Control\GNLKControl.Designer.cs">
       <DependentUpon>GNLKControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\YDDLKControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\YDDLKControl.Designer.cs">
+      <DependentUpon>YDDLKControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\ZZLKControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,6 +91,7 @@
     <Compile Include="Model\TRoom.cs" />
     <Compile Include="ViewModel\GNLKControlViewModel.cs" />
     <Compile Include="ViewModel\RoomFormViewModel.cs" />
+    <Compile Include="ViewModel\YDDLKControlViewModel.cs" />
     <Compile Include="ViewModel\ZZLKControlViewModel.cs" />
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -128,12 +135,21 @@
     <Compile Include="View\ZZLKControl_HF.Designer.cs">
       <DependentUpon>ZZLKControl_HF.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ZZLKControl_Query.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ZZLKControl_Query.Designer.cs">
+      <DependentUpon>ZZLKControl_Query.cs</DependentUpon>
+    </Compile>
     <Compile Include="VO\DictionaryInfo_RoomStatus\GetListVO.cs" />
     <Compile Include="VO\DictionaryInfo_RoomType\GetListVO.cs" />
     <Compile Include="VO\RoomFormViewModel_GetSingle\GetListVO.cs" />
     <Compile Include="VO\RoomFormViewModel_GetSingle\GetSingleVO.cs" />
     <EmbeddedResource Include="Control\GNLKControl.resx">
       <DependentUpon>GNLKControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\YDDLKControl.resx">
+      <DependentUpon>YDDLKControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\ZZLKControl.resx">
       <DependentUpon>ZZLKControl.cs</DependentUpon>
@@ -165,8 +181,12 @@
     <EmbeddedResource Include="View\ZZLKControl_HF.resx">
       <DependentUpon>ZZLKControl_HF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ZZLKControl_Query.resx">
+      <DependentUpon>ZZLKControl_Query.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Plugin\jquery\jquery.min.map" />
+    <None Include="Properties\DataSources\XCore.PMS.Winform.ViewModel.YDDLKControlViewModel.datasource" />
     <None Include="Properties\DataSources\XCore.PMS.Winform.ViewModel.ZZLKControlViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
