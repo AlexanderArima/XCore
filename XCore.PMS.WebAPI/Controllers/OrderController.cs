@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XCore.PMS.WebAPI.Model;
 using XCore.PMS.WebAPI.Model_ORM;
+using XCore.PMS.WebAPI.VO.Order;
 
 namespace XCore.PMS.WebAPI.Controllers
 {
@@ -28,20 +29,30 @@ namespace XCore.PMS.WebAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<ReceiveList<TOrder>>> GetAppointList(int index, int size)
+        public async Task<ActionResult<ReceiveList<AppointVO>>> GetAppointList(int index, int size)
         {
             try
             {
                 var list = await _context.TOrders.Where(m => m.Status == "1").ToListAsync();
+                //var list = await _context.TOrders.ToListAsync();
                 var count = list.Count;
-                list = list.Skip((index - 1) * size).Take(size).ToList();
-                ReceiveList<TOrder> result = new ReceiveList<TOrder>();
+                list = list.Skip((index) * size).Take(size).ToList();
+                List<AppointVO> list_appoint = new List<AppointVO>();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    var item = list.ElementAt(i);
+                    AppointVO model = new AppointVO();
+                    model.Xm = item.Xm;
+                    list_appoint.Add(model);
+                }
+
+                ReceiveList<AppointVO> result = new ReceiveList<AppointVO>();
                 result.code = 0;
-                result.data = new ReceiveList<TOrder>.Data()
+                result.data = new ReceiveList<AppointVO>.Data()
                 {
                     index = index,
                     count = count,
-                    list = list,
+                    list = list_appoint,
                 };
 
                 return result;
@@ -168,7 +179,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new ReceiveObject()
+                return Ok(new ReceiveObject()
                 {
                     code = 999999,
                     msg = "系统异常"

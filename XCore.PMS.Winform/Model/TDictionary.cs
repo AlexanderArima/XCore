@@ -13,7 +13,5 @@ namespace XCore.PMS.Winform.Model
         public string Displayname { get; set; }
         public string Actualname { get; set; }
         public string Sx { get; set; }
-        public string Createtime { get; set; }
-        public string Deleteflag { get; set; }
     }
 }

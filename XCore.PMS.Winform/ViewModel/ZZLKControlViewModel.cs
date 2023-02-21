@@ -21,9 +21,41 @@ namespace XCore.PMS.Winform.ViewModel
         public string ZJLX { get; set; }
         public string ZJHM { get; set; }
 
-        public static List<ZZLKControlViewModel> Query(int index, int size)
+        public static Tuple<bool, List<ZZLKControlViewModel>, string> Query(int index, int size)
         {
-            throw new Exception("");
+            try
+            {
+                var result = HttpService.GetService<XCore.PMS.Winform.VO.GNLKControlViewModel.QueryVO>(
+                                   "https://localhost:44384",
+                                   "Order/GetCheckinList");
+                if (result.code == 0)
+                {
+                    List<ZZLKControlViewModel> list = new List<ZZLKControlViewModel>();
+                    for (int i = 0; i < result.data.Count; i++)
+                    {
+                        var item = result.data.ElementAt(i);
+                        ZZLKControlViewModel model = new ZZLKControlViewModel();
+                        model.Id = item.Id.ToString();
+                        model.XM = item.Xm;
+                        model.XB = item.Sex.ToString();
+                        model.FJHM = item.Roomid;
+                        model.ZJLX = item.Zjlx;
+                        model.ZJHM = item.Zjhm;
+                        list.Add(model);
+                    }
+
+                    return new Tuple<bool, List<ZZLKControlViewModel>, string>(true, list, null);
+                }
+                else
+                {
+                    return new Tuple<bool, List<ZZLKControlViewModel>, string>(false, null, result.msg);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log4NetHelper.Error("ZZLKControlViewModel：Query出错：" + ex.Message, ex);
+                return new Tuple<bool, List<ZZLKControlViewModel>, string>(false, null, ex.Message);
+            }
         }
 
         /// <summary>

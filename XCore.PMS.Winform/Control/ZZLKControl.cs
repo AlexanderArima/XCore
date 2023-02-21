@@ -35,7 +35,7 @@ namespace XCore.PMS.Winform.Control
             this.Query();
         }
 
-        private void Query()
+        public void Query()
         {
             try
             {
@@ -47,6 +47,7 @@ namespace XCore.PMS.Winform.Control
                 }
 
                 this.dSkinDataGridView1.DataSource = result;
+                this.dSkinDataGridView1.Refresh();
             }
             catch(Exception ex)
             {

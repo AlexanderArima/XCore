@@ -3,33 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XCore.PMS.Winform.VO.DictionaryInfo_RoomStatus;
+using XCore.PMS.Winform.VO.DictionaryInfo_RoomType;
 
 namespace XCore.PMS.Winform.Model
 {
-    public class DictionaryInfo_RoomStatus
+    public class DictionaryInfo_ZJLX
     {
-        public static List<DictionaryInfo_RoomStatus> list_roomstatus;
+        public static List<DictionaryInfo_ZJLX> list_roomtype;
 
         public string actualName { get; set; }
 
         public string displayName { get; set; }
 
-        static DictionaryInfo_RoomStatus()
+        static DictionaryInfo_ZJLX()
         {
             try
             {
                 var result = HttpService.GetService<GetListVO>(
                   "https://localhost:44384",
                   "Dictionary/GetList",
-                  "typeid=3");
-                List<DictionaryInfo_RoomStatus> list = new List<DictionaryInfo_RoomStatus>();
+                  "typeid=1");
+                List<DictionaryInfo_ZJLX> list = new List<DictionaryInfo_ZJLX>();
                 if (result.code == 0)
                 {
                     for (int i = 0; i < result.data.Count; i++)
                     {
                         var item = result.data[i];
-                        DictionaryInfo_RoomStatus model = new DictionaryInfo_RoomStatus();
+                        DictionaryInfo_ZJLX model = new DictionaryInfo_ZJLX();
                         model.displayName = item.Displayname;
                         model.actualName = item.Actualname;
                         list.Add(model);
@@ -40,11 +40,11 @@ namespace XCore.PMS.Winform.Model
                     list = null;
                 }
 
-                DictionaryInfo_RoomStatus.list_roomstatus = list;
+                DictionaryInfo_ZJLX.list_roomtype = list;
             }
             catch (Exception ex)
             {
-                Log4NetHelper.Error("DictionaryInfo_ZJLX：出错：" + ex.Message, ex);
+                Log4NetHelper.Error("DictionaryInfo_RoomType：出错：" + ex.Message, ex);
             }
         }
 
@@ -53,9 +53,9 @@ namespace XCore.PMS.Winform.Model
         /// </summary>
         /// <param name="typeid"></param>
         /// <returns></returns>
-        public List<DictionaryInfo_RoomStatus> GetList()
+        public List<DictionaryInfo_ZJLX> GetList()
         {
-            return list_roomstatus;
+            return list_roomtype;
         }
     }
 }

@@ -10,7 +10,5 @@ namespace XXCore.PMS.Winform.Model
         public string Type { get; set; }
         public string Status { get; set; }
         public int Number { get; set; }
-        public string Createtime { get; set; }
-        public int Deleteflag { get; set; }
     }
 }

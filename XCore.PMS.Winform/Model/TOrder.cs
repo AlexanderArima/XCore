@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
-
-namespace XCore.PMS.WebAPI.Model_ORM
+namespace XCore.PMS.Winform.Model
 {
     public partial class TOrder
     {
@@ -14,7 +12,7 @@ namespace XCore.PMS.WebAPI.Model_ORM
         public string Ywm { get; set; }
         public string Zjhm { get; set; }
         public string Birthday { get; set; }
-        public string Sex { get; set; }
+        public int Sex { get; set; }
         public string Zjlx { get; set; }
         public string Qzlx { get; set; }
         public string Address { get; set; }
@@ -24,7 +22,5 @@ namespace XCore.PMS.WebAPI.Model_ORM
         public string Type { get; set; }
         public string Status { get; set; }
         public string Zjz { get; set; }
-        public string Createtime { get; set; }
-        public int Deleteflag { get; set; }
     }
 }

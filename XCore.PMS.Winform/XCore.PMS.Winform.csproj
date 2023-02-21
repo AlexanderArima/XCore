@@ -84,10 +84,13 @@
     </Compile>
     <Compile Include="interface\DictionaryInfo.cs" />
     <Compile Include="Model\DictionaryInfo_RoomStatus.cs" />
+    <Compile Include="Model\DictionaryInfo_ZJLX.cs" />
     <Compile Include="Model\DictionaryInfo_RoomType.cs" />
     <Compile Include="Model\Log4NetHelper.cs" />
     <Compile Include="Model\PathHelper.cs" />
+    <Compile Include="Model\ReceiveList.cs" />
     <Compile Include="Model\TDictionary.cs" />
+    <Compile Include="Model\TOrder.cs" />
     <Compile Include="Model\TRoom.cs" />
     <Compile Include="ViewModel\GNLKControlViewModel.cs" />
     <Compile Include="ViewModel\RoomFormViewModel.cs" />
@@ -143,8 +146,9 @@
     </Compile>
     <Compile Include="VO\DictionaryInfo_RoomStatus\GetListVO.cs" />
     <Compile Include="VO\DictionaryInfo_RoomType\GetListVO.cs" />
-    <Compile Include="VO\RoomFormViewModel_GetSingle\GetListVO.cs" />
-    <Compile Include="VO\RoomFormViewModel_GetSingle\GetSingleVO.cs" />
+    <Compile Include="VO\GNLKControlViewModel\QueryVO.cs" />
+    <Compile Include="VO\RoomFormViewModel\GetListVO.cs" />
+    <Compile Include="VO\RoomFormViewModel\GetSingleVO.cs" />
     <EmbeddedResource Include="Control\GNLKControl.resx">
       <DependentUpon>GNLKControl.cs</DependentUpon>
     </EmbeddedResource>

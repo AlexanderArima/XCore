@@ -124,7 +124,8 @@ namespace XCore.PMS.WebAPI.Model_ORM
                     .HasColumnName("roomid");
 
                 entity.Property(e => e.Sex)
-                    .HasColumnType("int(11)")
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .HasColumnName("sex");
 
                 entity.Property(e => e.Status)

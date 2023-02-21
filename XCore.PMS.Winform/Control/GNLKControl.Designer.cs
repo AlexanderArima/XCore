@@ -59,8 +59,10 @@ namespace XCore.PMS.Winform.Control
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dSkinTextBox1 = new DSkin.Controls.DSkinTextBox();
             this.dSkinLabel1 = new DSkin.Controls.DSkinLabel();
+            this.yddlkControl1 = new XCore.PMS.Winform.Control.YDDLKControl();
             this.dSkinPanel3.SuspendLayout();
             this.dSkinTabControl1.SuspendLayout();
+            this.dSkinTabPage1.SuspendLayout();
             this.dSkinTabPage2.SuspendLayout();
             this.dSkinPanel2.SuspendLayout();
             this.dSkinPanel4.SuspendLayout();
@@ -106,10 +108,12 @@ namespace XCore.PMS.Winform.Control
             this.dSkinTabControl1.UpdownBtnArrowPressColor = System.Drawing.Color.Gray;
             this.dSkinTabControl1.UpdownBtnBackColor = System.Drawing.Color.White;
             this.dSkinTabControl1.UpdownBtnBorderColor = System.Drawing.Color.Black;
+            this.dSkinTabControl1.SelectedIndexChanged += new System.EventHandler(this.dSkinTabControl1_SelectedIndexChanged);
             // 
             // dSkinTabPage1
             // 
             this.dSkinTabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.dSkinTabPage1.Controls.Add(this.yddlkControl1);
             this.dSkinTabPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dSkinTabPage1.Location = new System.Drawing.Point(0, 33);
             this.dSkinTabPage1.Name = "dSkinTabPage1";
@@ -317,6 +321,7 @@ namespace XCore.PMS.Winform.Control
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(486, 51);
             this.comboBox2.Name = "comboBox2";
@@ -439,6 +444,7 @@ namespace XCore.PMS.Winform.Control
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(279, 10);
             this.comboBox1.Name = "comboBox1";
@@ -465,6 +471,17 @@ namespace XCore.PMS.Winform.Control
             this.dSkinLabel1.TabIndex = 0;
             this.dSkinLabel1.Text = "姓名";
             // 
+            // yddlkControl1
+            // 
+            this.yddlkControl1.BackColor = System.Drawing.Color.White;
+            this.yddlkControl1.BitmapCache = false;
+            this.yddlkControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yddlkControl1.Location = new System.Drawing.Point(0, 0);
+            this.yddlkControl1.Name = "yddlkControl1";
+            this.yddlkControl1.RightBottom = ((System.Drawing.Image)(resources.GetObject("yddlkControl1.RightBottom")));
+            this.yddlkControl1.Size = new System.Drawing.Size(1024, 309);
+            this.yddlkControl1.TabIndex = 0;
+            // 
             // GNLKControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -474,8 +491,10 @@ namespace XCore.PMS.Winform.Control
             this.Controls.Add(this.dSkinPanel2);
             this.Name = "GNLKControl";
             this.Size = new System.Drawing.Size(1024, 600);
+            this.Load += new System.EventHandler(this.GNLKControl_Load);
             this.dSkinPanel3.ResumeLayout(false);
             this.dSkinTabControl1.ResumeLayout(false);
+            this.dSkinTabPage1.ResumeLayout(false);
             this.dSkinTabPage2.ResumeLayout(false);
             this.dSkinPanel2.ResumeLayout(false);
             this.dSkinPanel2.PerformLayout();
@@ -516,5 +535,6 @@ namespace XCore.PMS.Winform.Control
         private DSkin.Controls.DSkinTabPage dSkinTabPage1;
         private DSkin.Controls.DSkinTabPage dSkinTabPage2;
         private ZZLKControl zzlkControl1;
+        private YDDLKControl yddlkControl1;
     }
 }

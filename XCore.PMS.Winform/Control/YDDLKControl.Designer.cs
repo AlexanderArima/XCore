@@ -30,10 +30,10 @@ namespace XCore.PMS.Winform.Control
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YDDLKControl));
             this.dSkinDataGridView1 = new DSkin.Controls.DSkinDataGridView();
             this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -51,8 +51,6 @@ namespace XCore.PMS.Winform.Control
             this.yDDLKControlViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dSkinPanel1 = new DSkin.Controls.DSkinPanel();
             this.dSkinButton3 = new DSkin.Controls.DSkinButton();
-            this.dSkinButton2 = new DSkin.Controls.DSkinButton();
-            this.dSkinButton1 = new DSkin.Controls.DSkinButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dSkinDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yDDLKControlViewModelBindingSource)).BeginInit();
@@ -63,22 +61,22 @@ namespace XCore.PMS.Winform.Control
             // 
             this.dSkinDataGridView1.AllowUserToAddRows = false;
             this.dSkinDataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
-            this.dSkinDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
+            this.dSkinDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dSkinDataGridView1.AutoGenerateColumns = false;
             this.dSkinDataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dSkinDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dSkinDataGridView1.ColumnFont = null;
             this.dSkinDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dSkinDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dSkinDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dSkinDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dSkinDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chk,
@@ -95,14 +93,14 @@ namespace XCore.PMS.Winform.Control
             this.zJHMDataGridViewTextBoxColumn});
             this.dSkinDataGridView1.ColumnSelectForeColor = System.Drawing.SystemColors.HighlightText;
             this.dSkinDataGridView1.DataSource = this.yDDLKControlViewModelBindingSource;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dSkinDataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dSkinDataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dSkinDataGridView1.EnableHeadersVisualStyles = false;
             this.dSkinDataGridView1.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dSkinDataGridView1.HeadFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -112,10 +110,10 @@ namespace XCore.PMS.Winform.Control
             this.dSkinDataGridView1.ReadOnly = true;
             this.dSkinDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dSkinDataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dSkinDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dSkinDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dSkinDataGridView1.RowTemplate.Height = 23;
             this.dSkinDataGridView1.Size = new System.Drawing.Size(1021, 256);
             this.dSkinDataGridView1.TabIndex = 0;
@@ -225,8 +223,6 @@ namespace XCore.PMS.Winform.Control
             // 
             this.dSkinPanel1.BackColor = System.Drawing.Color.Transparent;
             this.dSkinPanel1.Controls.Add(this.dSkinButton3);
-            this.dSkinPanel1.Controls.Add(this.dSkinButton2);
-            this.dSkinPanel1.Controls.Add(this.dSkinButton1);
             this.dSkinPanel1.Location = new System.Drawing.Point(492, 259);
             this.dSkinPanel1.Name = "dSkinPanel1";
             this.dSkinPanel1.RightBottom = ((System.Drawing.Image)(resources.GetObject("dSkinPanel1.RightBottom")));
@@ -244,7 +240,7 @@ namespace XCore.PMS.Winform.Control
             this.dSkinButton3.HoverColor = System.Drawing.Color.Empty;
             this.dSkinButton3.HoverImage = null;
             this.dSkinButton3.IsPureColor = false;
-            this.dSkinButton3.Location = new System.Drawing.Point(323, 3);
+            this.dSkinButton3.Location = new System.Drawing.Point(464, 3);
             this.dSkinButton3.Name = "dSkinButton3";
             this.dSkinButton3.NormalImage = null;
             this.dSkinButton3.PressColor = System.Drawing.Color.Empty;
@@ -256,52 +252,7 @@ namespace XCore.PMS.Winform.Control
             this.dSkinButton3.Text = "删除";
             this.dSkinButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.dSkinButton3.TextPadding = 0;
-            // 
-            // dSkinButton2
-            // 
-            this.dSkinButton2.AdaptImage = true;
-            this.dSkinButton2.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(186)))), ((int)(((byte)(233)))));
-            this.dSkinButton2.ButtonBorderColor = System.Drawing.Color.Gray;
-            this.dSkinButton2.ButtonBorderWidth = 1;
-            this.dSkinButton2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.dSkinButton2.HoverColor = System.Drawing.Color.Empty;
-            this.dSkinButton2.HoverImage = null;
-            this.dSkinButton2.IsPureColor = false;
-            this.dSkinButton2.Location = new System.Drawing.Point(455, 3);
-            this.dSkinButton2.Name = "dSkinButton2";
-            this.dSkinButton2.NormalImage = null;
-            this.dSkinButton2.PressColor = System.Drawing.Color.Empty;
-            this.dSkinButton2.PressedImage = null;
-            this.dSkinButton2.Radius = 10;
-            this.dSkinButton2.ShowButtonBorder = true;
-            this.dSkinButton2.Size = new System.Drawing.Size(60, 30);
-            this.dSkinButton2.TabIndex = 1;
-            this.dSkinButton2.Text = "换房";
-            this.dSkinButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.dSkinButton2.TextPadding = 0;
-            // 
-            // dSkinButton1
-            // 
-            this.dSkinButton1.AdaptImage = true;
-            this.dSkinButton1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(186)))), ((int)(((byte)(233)))));
-            this.dSkinButton1.ButtonBorderColor = System.Drawing.Color.Gray;
-            this.dSkinButton1.ButtonBorderWidth = 1;
-            this.dSkinButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.dSkinButton1.HoverColor = System.Drawing.Color.Empty;
-            this.dSkinButton1.HoverImage = null;
-            this.dSkinButton1.IsPureColor = false;
-            this.dSkinButton1.Location = new System.Drawing.Point(389, 3);
-            this.dSkinButton1.Name = "dSkinButton1";
-            this.dSkinButton1.NormalImage = null;
-            this.dSkinButton1.PressColor = System.Drawing.Color.Empty;
-            this.dSkinButton1.PressedImage = null;
-            this.dSkinButton1.Radius = 10;
-            this.dSkinButton1.ShowButtonBorder = true;
-            this.dSkinButton1.Size = new System.Drawing.Size(60, 30);
-            this.dSkinButton1.TabIndex = 0;
-            this.dSkinButton1.Text = "退房";
-            this.dSkinButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.dSkinButton1.TextPadding = 0;
+            this.dSkinButton3.Click += new System.EventHandler(this.dSkinButton3_Click);
             // 
             // checkBox1
             // 
@@ -322,6 +273,7 @@ namespace XCore.PMS.Winform.Control
             this.Controls.Add(this.dSkinDataGridView1);
             this.Name = "YDDLKControl";
             this.Size = new System.Drawing.Size(1024, 300);
+            this.Load += new System.EventHandler(this.YDDLKControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dSkinDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yDDLKControlViewModelBindingSource)).EndInit();
             this.dSkinPanel1.ResumeLayout(false);
@@ -335,8 +287,6 @@ namespace XCore.PMS.Winform.Control
         private DSkin.Controls.DSkinDataGridView dSkinDataGridView1;
         private DSkin.Controls.DSkinPanel dSkinPanel1;
         private DSkin.Controls.DSkinButton dSkinButton3;
-        private DSkin.Controls.DSkinButton dSkinButton2;
-        private DSkin.Controls.DSkinButton dSkinButton1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMDataGridViewTextBoxColumn;

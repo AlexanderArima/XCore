@@ -72,5 +72,49 @@ namespace XCore.PMS.Winform.Control
                 MessageBox.Show("预定成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void GNLKControl_Load(object sender, EventArgs e)
+        {
+            // 初始化证件类型
+            DictionaryInfo_ZJLX dict2 = new DictionaryInfo_ZJLX();
+            var list2 = dict2.GetList();
+            comboBox1.DataSource = list2;
+            if (list2 != null && list2.Count > 0)
+            {
+                comboBox1.DisplayMember = "displayName";  // 显示出来的。Text
+                comboBox1.ValueMember = "actualName";        // value值。
+            }
+
+            // 初始化房间号
+            var result = RoomFormViewModel.GetList();
+            if (result.Item1 == true)
+            {
+                var list = result.Item2;
+                comboBox2.DataSource = list;
+                if (list != null && list.Count > 0)
+                {
+                    comboBox2.DisplayMember = "name";  // 显示出来的。Text
+                    comboBox2.ValueMember = "id";        // value值。
+                }
+            }
+
+            this.dSkinTextBox1.Text = "张三";
+            this.dSkinTextBox2.Text = "420101199909091111";
+            this.dSkinDateTimePicker1.Text = "1999-09-09";
+            this.dSkinTextBox4.Text = "2233";
+        }
+
+        private void dSkinTabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (this.dSkinTabControl1.SelectedIndex)
+            {
+                case 0:
+                    this.yddlkControl1.Query();
+                    break;
+                case 1:
+                    this.zzlkControl1.Query();
+                    break;
+            }
+        }
     }
 }
