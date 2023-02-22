@@ -118,7 +118,7 @@
             请求数据，无错误时返回值
             </summary>
         </member>
-        <member name="P:XCore.PMS.WebAPI.VO.Order.AppointVO.Sfgn">
+        <member name="P:XCore.PMS.WebAPI.VO.Order.AppointVO.Type">
             <summary>
             是否是国内旅客.
             </summary>

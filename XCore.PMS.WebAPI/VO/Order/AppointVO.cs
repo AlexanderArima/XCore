@@ -33,9 +33,11 @@ namespace XCore.PMS.WebAPI.VO.Order
 
         public string Zjz { get; set; }
 
+        public string Gj { get; set; }
+
         /// <summary>
         /// 是否是国内旅客.
         /// </summary>
-        public int Sfgn { get; set; }
+        public string Type { get; set; }
     }
 }

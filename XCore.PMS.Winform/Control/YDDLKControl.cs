@@ -72,6 +72,32 @@ namespace XCore.PMS.Winform.Control
                     return;
                 }
 
+                var list_room = RoomFormViewModel.GetList().Item2;
+                DictionaryInfo_ZJLX dict_zjlx = new DictionaryInfo_ZJLX();
+                var list_zjlx = dict_zjlx.GetList();
+                var list = result.Item2;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    var item = list.ElementAt(i);
+                    if(item.Type != null)
+                    {
+                        switch (item.Type)
+                        {
+                            case "1":
+                                item.GJ = "中国";
+                                break;
+
+                            case "2":
+                                item.GJ = "";
+                                break;
+                        }
+                    }
+
+                    item.ZJLX = list_zjlx.Find(m => m.actualName == item.ZJLX).displayName;
+                    item.XB = item.XB == "1" ? "男" : "女";
+                    item.FJHM = list_room.Find(m => m.ID == item.FJHM).Name;
+                }
+
                 this.dSkinDataGridView1.DataSource = result.Item2;
                 this.dSkinDataGridView1.Refresh();
             }

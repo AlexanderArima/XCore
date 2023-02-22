@@ -34,7 +34,6 @@ namespace XCore.PMS.WebAPI.Controllers
             try
             {
                 var list = await _context.TOrders.Where(m => m.Status == "1").ToListAsync();
-                //var list = await _context.TOrders.ToListAsync();
                 var count = list.Count;
                 list = list.Skip((index) * size).Take(size).ToList();
                 List<AppointVO> list_appoint = new List<AppointVO>();
@@ -43,6 +42,16 @@ namespace XCore.PMS.WebAPI.Controllers
                     var item = list.ElementAt(i);
                     AppointVO model = new AppointVO();
                     model.Xm = item.Xm;
+                    model.Zjhm = item.Zjhm;
+                    model.Zjlx = item.Zjlx;
+                    model.Sex = Convert.ToInt32(item.Sex);
+                    model.Roomid = item.Roomid;
+                    model.Id = item.Id;
+                    model.Appointtime = item.Appointtime;
+                    model.Ywx = item.Ywx;
+                    model.Ywm = item.Ywm;
+                    model.Type = item.Type;
+                    model.Gj = item.Gj;
                     list_appoint.Add(model);
                 }
 

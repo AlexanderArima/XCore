@@ -20,6 +20,7 @@ namespace XCore.PMS.Winform.ViewModel
         public string GJ { get; set; }
         public string ZJLX { get; set; }
         public string ZJHM { get; set; }
+        public string Type { get; set; }
 
         public static Tuple<bool, List<YDDLKControlViewModel>, string> Query(int index, int size)
         {
@@ -41,6 +42,10 @@ namespace XCore.PMS.Winform.ViewModel
                         model.FJHM = item.Roomid;
                         model.ZJLX = item.Zjlx;
                         model.ZJHM = item.Zjhm;
+                        model.RZSJ = item.Appointtime;
+                        model.YWM = item.Ywm;
+                        model.YWX = item.Ywx;
+                        model.Type = item.Type;
                         list.Add(model);
                     }
 

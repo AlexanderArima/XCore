@@ -26,5 +26,6 @@ namespace XCore.PMS.WebAPI.Model_ORM
         public string Zjz { get; set; }
         public string Createtime { get; set; }
         public int Deleteflag { get; set; }
+        public string Gj { get; set; }
     }
 }

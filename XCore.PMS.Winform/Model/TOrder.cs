@@ -21,6 +21,7 @@ namespace XCore.PMS.Winform.Model
         public string Checkouttime { get; set; }
         public string Type { get; set; }
         public string Status { get; set; }
+        public string Gj { get; set; }
         public string Zjz { get; set; }
     }
 }

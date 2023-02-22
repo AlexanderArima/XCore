@@ -114,6 +114,11 @@ namespace XCore.PMS.WebAPI.Model_ORM
                     .HasColumnType("int(11)")
                     .HasColumnName("deleteflag");
 
+                entity.Property(e => e.Gj)
+                    .HasMaxLength(50)
+                    .HasColumnName("gj")
+                    .HasComment("国籍");
+
                 entity.Property(e => e.Qzlx)
                     .HasMaxLength(50)
                     .HasColumnName("qzlx");

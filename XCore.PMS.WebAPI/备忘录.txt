@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext -Force "server=127.0.0.1;Port=3306;database=db_hotel;uid=root;pwd=123456;" -Provider "Pomelo.EntityFrameworkCore.Mysql" -OutputDir Model_ORM
