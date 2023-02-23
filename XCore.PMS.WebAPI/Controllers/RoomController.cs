@@ -77,7 +77,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 var obj = _context.TRooms.Where(m => m.Id == room.Id);
                 if(obj == null)
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 999999,
                         msg = "系统异常"
@@ -96,7 +96,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 tRoom.Status = room.Status;
                 _context.Update<TRoom>(tRoom);
                 await _context.SaveChangesAsync();
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 0,
                     msg = "修改成功"
@@ -104,7 +104,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new ReceiveObject()
+                return BadRequest(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -121,7 +121,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 var flag = list.Exists(m => m.Name == model.Name);
                 if(flag)
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 999999,
                         msg = "该房间名已存在"
@@ -139,7 +139,7 @@ namespace XCore.PMS.WebAPI.Controllers
 
                 _context.TRooms.Add(tRoom);
                 await _context.SaveChangesAsync();
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 0,
                     msg = "添加成功"
@@ -147,7 +147,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch(Exception ex)
             {
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -163,7 +163,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 var tRoom = await _context.TRooms.FindAsync(id);
                 if (tRoom == null)
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 0,
                         msg = "房间号不存在"
@@ -172,7 +172,7 @@ namespace XCore.PMS.WebAPI.Controllers
 
                 _context.TRooms.Remove(tRoom);
                 await _context.SaveChangesAsync();
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 0,
                     msg = "删除成功"
@@ -180,7 +180,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "系统异常"

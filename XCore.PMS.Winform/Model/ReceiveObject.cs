@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace XCore.PMS.Winform.Model
 {
-    public class ReceiveObject
+    public class ReceiveObject<T>
     {
         public int code { get; set; }
         public string msg { get; set; }
-        public string data { get; set; }
+        public T data { get; set; }
     }
 }

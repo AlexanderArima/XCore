@@ -51,7 +51,7 @@ namespace XCore.PMS.Winform.ViewModel
                 param.Add(new JProperty("birthday", this.birthday));
                 param.Add(new JProperty("address", this.address));
                 param.Add(new JProperty("type", "1"));
-                var result = HttpService.PostService<ReceiveObject>(
+                var result = HttpService.PostService<ReceiveObject<string>>(
                    "https://localhost:44384/Order/Appoint",
                    param.ToString());
                 if (result.code != 0)

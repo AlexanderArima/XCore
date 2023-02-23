@@ -38,7 +38,7 @@ namespace XCore.PMS.WebAPI.Controllers
             //1、验证用户名和密码
             if(string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "用户名或密码不能为空"
@@ -50,7 +50,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 var flag = context.TUsers.Any(m => m.Username == username);
                 if (flag == false)
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 999999,
                         msg = "用户名不存在"
@@ -60,7 +60,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 flag = context.TUsers.Any(m => m.Username == username && m.Password == password);
                 if (flag == false)
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 999999,
                         msg = "密码错误"
@@ -96,7 +96,7 @@ namespace XCore.PMS.WebAPI.Controllers
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);  // 转成字符串token
 
             //3、返回200 OK，回传jwt
-            return Ok(new ReceiveObject()
+            return Ok(new ReceiveObject<string>()
             {
                 code = 0,
                 data = tokenString

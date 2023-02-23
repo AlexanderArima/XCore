@@ -19,6 +19,26 @@ namespace XCore.PMS.Winform.Control
         public GNLKControl()
         {
             InitializeComponent();
+
+            this.yddlkControl1.BindFormAction += (YDDLKControlViewModel obj) =>
+            {
+                this.dSkinTextBox1.Text = obj.XM;
+                this.comboBox1.SelectedValue = obj.ZJLX;
+                this.dSkinTextBox2.Text = obj.ZJHM;
+                if(obj.XB == "1")
+                {
+                    this.dSkinRadioButton1.Checked = true;
+                }
+                else
+                {
+                    this.dSkinRadioButton2.Checked = true;
+                }
+
+                this.dSkinDateTimePicker1.Text = obj.CSRQ;
+                this.comboBox2.SelectedValue = obj.FJHM;
+                this.dSkinTextBox4.Text = obj.XZ;
+                this.dSkinLabel9.Text = obj.RZSJ;
+            };
         }
 
         /// <summary>

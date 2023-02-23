@@ -37,11 +37,10 @@ namespace XCore.PMS.Winform.Control
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YDDLKControl));
             this.dSkinDataGridView1 = new DSkin.Controls.DSkinDataGridView();
-            this.yDDLKControlViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dSkinPanel1 = new DSkin.Controls.DSkinPanel();
             this.dSkinButton3 = new DSkin.Controls.DSkinButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yWXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,9 +52,10 @@ namespace XCore.PMS.Winform.Control
             this.gJDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zJLXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zJHMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yDDLKControlViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dSkinDataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yDDLKControlViewModelBindingSource)).BeginInit();
             this.dSkinPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yDDLKControlViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dSkinDataGridView1
@@ -108,6 +108,7 @@ namespace XCore.PMS.Winform.Control
             this.dSkinDataGridView1.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dSkinDataGridView1.HeadFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dSkinDataGridView1.HeadSelectForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dSkinDataGridView1.LineNumber = false;
             this.dSkinDataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dSkinDataGridView1.MultiSelect = false;
             this.dSkinDataGridView1.Name = "dSkinDataGridView1";
@@ -135,10 +136,16 @@ namespace XCore.PMS.Winform.Control
             this.dSkinDataGridView1.TitleBack = null;
             this.dSkinDataGridView1.TitleBackColorBegin = System.Drawing.Color.White;
             this.dSkinDataGridView1.TitleBackColorEnd = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(242)))));
+            this.dSkinDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dSkinDataGridView1_CellClick);
+            this.dSkinDataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dSkinDataGridView1_CellDoubleClick);
             // 
-            // yDDLKControlViewModelBindingSource
+            // chk
             // 
-            this.yDDLKControlViewModelBindingSource.DataSource = typeof(XCore.PMS.Winform.ViewModel.YDDLKControlViewModel);
+            this.chk.HeaderText = "";
+            this.chk.Name = "chk";
+            this.chk.ReadOnly = true;
+            this.chk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.chk.Width = 40;
             // 
             // dSkinPanel1
             // 
@@ -178,19 +185,12 @@ namespace XCore.PMS.Winform.Control
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(14, 7);
+            this.checkBox1.Location = new System.Drawing.Point(15, 7);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 3;
             this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // chk
-            // 
-            this.chk.HeaderText = "";
-            this.chk.Name = "chk";
-            this.chk.ReadOnly = true;
-            this.chk.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.chk.Width = 40;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -278,6 +278,10 @@ namespace XCore.PMS.Winform.Control
             this.zJHMDataGridViewTextBoxColumn.ReadOnly = true;
             this.zJHMDataGridViewTextBoxColumn.Width = 180;
             // 
+            // yDDLKControlViewModelBindingSource
+            // 
+            this.yDDLKControlViewModelBindingSource.DataSource = typeof(XCore.PMS.Winform.ViewModel.YDDLKControlViewModel);
+            // 
             // YDDLKControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -290,8 +294,8 @@ namespace XCore.PMS.Winform.Control
             this.Size = new System.Drawing.Size(1024, 300);
             this.Load += new System.EventHandler(this.YDDLKControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dSkinDataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yDDLKControlViewModelBindingSource)).EndInit();
             this.dSkinPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.yDDLKControlViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

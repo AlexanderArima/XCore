@@ -26,7 +26,7 @@ namespace XCore.PMS.Winform.ViewModel
 
             try
             {
-                var result = HttpService.GetServiceNoAuth<ReceiveObject>(
+                var result = HttpService.GetServiceNoAuth<ReceiveObject<string>>(
                 "https://localhost:44384",
                 "User/Login",
                 string.Format("username={0}&password={1}", this.UserName, this.Password));

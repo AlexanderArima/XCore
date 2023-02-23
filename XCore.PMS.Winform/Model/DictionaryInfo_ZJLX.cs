@@ -22,7 +22,7 @@ namespace XCore.PMS.Winform.Model
                 var result = HttpService.GetService<GetListVO>(
                   "https://localhost:44384",
                   "Dictionary/GetList",
-                  "typeid=1");
+                  "typeid=3");
                 List<DictionaryInfo_ZJLX> list = new List<DictionaryInfo_ZJLX>();
                 if (result.code == 0)
                 {

@@ -68,7 +68,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch(Exception ex)
             {
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -101,7 +101,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -115,16 +115,34 @@ namespace XCore.PMS.WebAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<TOrder>> GetOrder(int id)
+        public async Task<ActionResult<ReceiveObject<TOrder>>> GetOrder(int id)
         {
-            var tOrder = await _context.TOrders.FindAsync(id);
-
-            if (tOrder == null)
+            try
             {
-                return NotFound();
-            }
+                var tOrder = await _context.TOrders.FindAsync(id);
+                if (tOrder == null)
+                {
+                    return Ok(new ReceiveObject<string>()
+                    {
+                        code = 999999,
+                        msg = "未查询到这条订单"
+                    });
+                }
 
-            return tOrder;
+                return Ok(new ReceiveObject<TOrder>()
+                {
+                    code = 0,
+                    data = tOrder,
+                });
+            }
+            catch(Exception ex)
+            {
+                return Ok(new ReceiveObject<string>()
+                {
+                    code = 999999,
+                    msg = "系统异常"
+                });
+            }
         }
 
         /// <summary>
@@ -140,7 +158,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 var obj = _context.TOrders.Where(m => m.Id == tOrder.Id);
                 if (obj == null)
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 999999,
                         msg = "系统异常"
@@ -149,7 +167,7 @@ namespace XCore.PMS.WebAPI.Controllers
 
                 _context.Update<TOrder>(tOrder);
                 await _context.SaveChangesAsync();
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 0,
                     msg = "修改成功"
@@ -157,7 +175,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -180,7 +198,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 tOrder.Status = "1";
                 _context.TOrders.Add(tOrder);
                 await _context.SaveChangesAsync();
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 0,
                     msg = "添加成功"
@@ -188,7 +206,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -211,7 +229,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 tOrder.Status = "2";
                 _context.TOrders.Add(tOrder);
                 await _context.SaveChangesAsync();
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 0,
                     msg = "添加成功"
@@ -219,7 +237,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -240,7 +258,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 var obj = _context.TOrders.Where(m => m.Id == id).SingleOrDefault();
                 if (obj == null)
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 999999,
                         msg = "系统异常"
@@ -249,7 +267,7 @@ namespace XCore.PMS.WebAPI.Controllers
 
                 if(obj.Status != "2")
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 999999,
                         msg = "订单不是入住状态"
@@ -260,7 +278,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 obj.Checkouttime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 _context.Update<TOrder>(obj);
                 await _context.SaveChangesAsync();
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 0,
                     msg = "修改成功"
@@ -268,7 +286,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -290,7 +308,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 var obj = _context.TOrders.Where(m => m.Id == id).SingleOrDefault();
                 if (obj == null)
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 999999,
                         msg = "系统异常"
@@ -299,7 +317,7 @@ namespace XCore.PMS.WebAPI.Controllers
 
                 if (obj.Status != "2")
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 999999,
                         msg = "订单不是入住状态"
@@ -309,7 +327,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 obj.Roomid = roomid;
                 _context.Update<TOrder>(obj);
                 await _context.SaveChangesAsync();
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 0,
                     msg = "修改成功"
@@ -317,7 +335,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "系统异常"
@@ -338,7 +356,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 var obj = _context.TOrders.Where(m => m.Id == id).SingleOrDefault();
                 if (obj == null)
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 999999,
                         msg = "系统异常"
@@ -347,7 +365,7 @@ namespace XCore.PMS.WebAPI.Controllers
 
                 if (obj.Status != "1")
                 {
-                    return Ok(new ReceiveObject()
+                    return Ok(new ReceiveObject<string>()
                     {
                         code = 999999,
                         msg = "订单不是预订状态"
@@ -357,7 +375,7 @@ namespace XCore.PMS.WebAPI.Controllers
                 obj.Status = "4";
                 _context.Update<TOrder>(obj);
                 await _context.SaveChangesAsync();
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 0,
                     msg = "修改成功"
@@ -365,7 +383,7 @@ namespace XCore.PMS.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new ReceiveObject()
+                return Ok(new ReceiveObject<string>()
                 {
                     code = 999999,
                     msg = "系统异常"

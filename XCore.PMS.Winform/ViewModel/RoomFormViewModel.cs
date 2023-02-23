@@ -113,7 +113,7 @@ namespace XCore.PMS.Winform.ViewModel
                 JObject param = new JObject();
                 param.Add(new JProperty("Name", name));
                 param.Add(new JProperty("Type", typeid));
-                var result = HttpService.PostService<ReceiveObject>(
+                var result = HttpService.PostService<ReceiveObject<string>>(
                    "https://localhost:44384/Room/AddRoom",
                    param.ToString());
                 if(result.code != 0)
@@ -147,7 +147,7 @@ namespace XCore.PMS.Winform.ViewModel
                 param.Add(new JProperty("Name", name));
                 param.Add(new JProperty("Type", type));
                 param.Add(new JProperty("Status", status));
-                var result = HttpService.PostService<ReceiveObject>(
+                var result = HttpService.PostService<ReceiveObject<string>>(
                    "https://localhost:44384/Room/UpdateRoom",
                    param.ToString());
                 if (result.code != 0)
@@ -170,7 +170,7 @@ namespace XCore.PMS.Winform.ViewModel
         {
             try
             {
-                var result = HttpService.GetService<ReceiveObject>(
+                var result = HttpService.GetService<ReceiveObject<string>>(
                    "https://localhost:44384/Room", "DeleteRoom?id=" + roomid);
                 if (result.code != 0)
                 {

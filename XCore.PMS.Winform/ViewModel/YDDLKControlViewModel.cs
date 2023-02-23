@@ -21,6 +21,50 @@ namespace XCore.PMS.Winform.ViewModel
         public string ZJLX { get; set; }
         public string ZJHM { get; set; }
         public string Type { get; set; }
+        public string CSRQ { get; set; }
+        public string XZ { get; set; }
+
+        /// <summary>
+        /// 查询单条订单.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static Tuple<bool, YDDLKControlViewModel, string> QuerySingle(string id)
+        {
+            try
+            {
+                var result = HttpService.GetService<ReceiveObject<TOrder>>(
+                                   "https://localhost:44384",
+                                   string.Format("Order/GetOrder?id={0}", id));
+                if (result.code == 0)
+                {
+                    var item = result.data;
+                    YDDLKControlViewModel model = new YDDLKControlViewModel();
+                    model.Id = item.Id.ToString();
+                    model.XM = item.Xm;
+                    model.XB = item.Sex.ToString();
+                    model.FJHM = item.Roomid;
+                    model.ZJLX = item.Zjlx;
+                    model.ZJHM = item.Zjhm;
+                    model.RZSJ = item.Appointtime;
+                    model.YWM = item.Ywm;
+                    model.YWX = item.Ywx;
+                    model.Type = item.Type;
+                    model.CSRQ = item.Birthday;
+                    model.XZ = item.Address;
+                    return new Tuple<bool, YDDLKControlViewModel, string>(true, model, null);
+                }
+                else
+                {
+                    return new Tuple<bool, YDDLKControlViewModel, string>(false, null, result.msg);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log4NetHelper.Error("ZZLKControlViewModel：QuerySingle出错：" + ex.Message, ex);
+                return new Tuple<bool, YDDLKControlViewModel, string>(false, null, ex.Message);
+            }
+        }
 
         public static Tuple<bool, List<YDDLKControlViewModel>, string> Query(int index, int size)
         {

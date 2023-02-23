@@ -19,6 +19,11 @@ namespace XCore.PMS.Winform.Control
 
         int _pageSize = 10;
 
+        /// <summary>
+        /// 绑定数据到表单中.
+        /// </summary>
+        public Action<YDDLKControlViewModel> BindFormAction { get; set; }
+
         public YDDLKControl()
         {
             InitializeComponent();
@@ -110,6 +115,73 @@ namespace XCore.PMS.Winform.Control
         private void YDDLKControl_Load(object sender, EventArgs e)
         {
             this.Query();
+        }
+
+        /// <summary>
+        /// 单元格双击事件
+        /// </summary>
+        private void dSkinDataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 单元格单击事件
+        /// </summary>
+        private void dSkinDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dSkinDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            var rows = this.dSkinDataGridView1.Rows;
+            if(index < 0)
+            {
+                return;
+            }
+
+            DataGridViewCheckBoxCell chk = rows[index].Cells[0] as DataGridViewCheckBoxCell;
+            if (chk.Value == null)
+            {
+                chk.Value = true;
+            }
+            else
+            {
+                chk.Value = !Convert.ToBoolean(chk.Value);
+            }
+        }
+
+        private void dSkinDataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            var rows = this.dSkinDataGridView1.Rows;
+            var id = rows[index].Cells[1].Value.ToString();
+
+            // 查询订单详情
+            var result = YDDLKControlViewModel.QuerySingle(id);
+            if(result.Item1 == false)
+            {
+                MessageBox.Show(result.Item3, "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if(this.BindFormAction != null)
+            {
+                this.BindFormAction(result.Item2);
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            var chk = this.checkBox1.Checked;
+            var rows = this.dSkinDataGridView1.Rows;
+            for (int i = 0; i < rows.Count; i++)
+            {
+                var item = rows[i].Cells[0];
+                item.Value = chk;
+            }
         }
     }
 }

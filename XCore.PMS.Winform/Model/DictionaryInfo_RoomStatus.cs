@@ -22,7 +22,7 @@ namespace XCore.PMS.Winform.Model
                 var result = HttpService.GetService<GetListVO>(
                   "https://localhost:44384",
                   "Dictionary/GetList",
-                  "typeid=3");
+                  "typeid=2");
                 List<DictionaryInfo_RoomStatus> list = new List<DictionaryInfo_RoomStatus>();
                 if (result.code == 0)
                 {
