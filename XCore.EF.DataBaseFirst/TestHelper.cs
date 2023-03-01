@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace XCore.EF.DataBaseFirst
         /// </summary>
         /// <param name="id"></param>
         /// <param name="name"></param>
-        public static void Insert(string name)
+        public async static void Insert(string name)
         {
             using (var context = new db_hotelContext())
             {
@@ -23,7 +24,7 @@ namespace XCore.EF.DataBaseFirst
                 };
 
                 context.TTests.Add(test);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
         }
 
@@ -89,7 +90,16 @@ namespace XCore.EF.DataBaseFirst
                 var result = context.TTests.Where(m => m.Id == id);
                 foreach (var item in result)
                 {
-                    Console.WriteLine($"Id：{item.Id}，Name：{item.Name}");
+                    Console.WriteLine($"使用IQueryable查询，Id：{item.Id}，Name：{item.Name}");
+                }
+            }
+
+            using (var context = new db_hotelContext())
+            {
+                IEnumerable<TTest> result = context.TTests;
+                foreach (var item in result.Where(m => m.Id == id))
+                {
+                    Console.WriteLine($"使用IEnumerable查询，Id：{item.Id}，Name：{item.Name}");
                 }
             }
         }
@@ -110,6 +120,18 @@ namespace XCore.EF.DataBaseFirst
                 {
                     Console.WriteLine($"Name：{item.Name}，数量：{item.Count}");
                 }
+            }
+        }
+
+        /// <summary>
+        /// 分组查询总数.
+        /// </summary>
+        public async static void QueryLong()
+        {
+            using (var context = new db_hotelContext())
+            {
+                var result = await context.TTests.LongCountAsync();
+                Console.WriteLine("LongCountAsync返回的是Long类型的Count数：" + result);
             }
         }
     }

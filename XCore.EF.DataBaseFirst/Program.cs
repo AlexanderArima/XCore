@@ -11,7 +11,8 @@ namespace XCore.EF.DataBaseFirst
             // TestHelper.Delete(1);
             // TestHelper.Update(2, "修改后的名字");
             // TestHelper.QueryByID(2);
-            TestHelper.QueryCount();
+            // TestHelper.QueryByID(16);
+            TestHelper.QueryLong();
             Console.WriteLine("Hello World!");
         }
     }

@@ -2,12 +2,15 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,8 +38,30 @@ namespace XCore.PMS.WebAPI
 
             services.AddDbContext<db_hotelContext>();
 
+            // 注册Identity框架
+            services.AddDbContext<IdDbContext>(opt =>
+            {
+                string connStr = this.Configuration.GetConnectionString("IdentityConfigServer");
+                opt.UseMySql(connectionString: connStr, serverVersion: ServerVersion.AutoDetect(connStr));
+            });
+
+            services.AddDataProtection();
+            services.AddIdentityCore<User>(options =>
+            {
+                options.Password.RequireDigit = false;    // 密码必须包含数字
+                options.Password.RequireLowercase = false;    // 密码必须包含小写字母
+                options.Password.RequireNonAlphanumeric = false;    // 密码必须包含特殊符号
+                options.Password.RequireUppercase = false;    // 密码必须包含大写字母
+                options.Password.RequiredLength = 6;    // 密码长度至少6位
+                options.Tokens.PasswordResetTokenProvider = TokenOptions.DefaultEmailProvider;    // 重置密码采用邮件的形式
+                options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;    // 确认邮件验证码采用邮件的形式
+            });
+
+            var idbuilder = new IdentityBuilder(typeof(User), typeof(Role), services);
+            idbuilder.AddEntityFrameworkStores<IdDbContext>().AddDefaultTokenProviders().AddRoleManager<RoleManager<Role>>().AddUserManager<UserManager<User>>();
+
             // 加载用户机密
-            GlobalConfig.DbConnectionString = this.Configuration.GetConnectionString("configServer");
+            GlobalConfig.DbConnectionString = this.Configuration["configServer"];
 
             // 将Swagger相关的服务注册到容器中
             services.AddSwaggerGen(c =>
@@ -46,6 +71,25 @@ namespace XCore.PMS.WebAPI
                     Title = "测试标题",
                     Description = "XCore.WebAPI的描述",
                 });
+
+                // 通过对OpenAPI的配置实现从Swagger中发送Authorization报文头
+                var scheme = new OpenApiSecurityScheme()
+                {
+                    Description = "Authorization header. \r\nExample: 'Bearer 12345abcdef'",
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Authorization"
+                    },
+                    Scheme = "oauth2",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,Type = SecuritySchemeType.ApiKey,
+                };
+
+                c.AddSecurityDefinition("Authorization", scheme);
+                var requirement = new OpenApiSecurityRequirement();
+                requirement[scheme] = new List<string>();
+                c.AddSecurityRequirement(requirement);
 
                 // 为 Swagger JSON and UI设置xml文档注释路径
                 var basePath = Path.GetDirectoryName(typeof(Program).Assembly.Location);//获取应用程序所在目录（绝对，不受工作目录影响，建议采用此方法获取路径）
