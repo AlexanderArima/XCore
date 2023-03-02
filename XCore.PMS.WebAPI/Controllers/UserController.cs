@@ -36,7 +36,7 @@ namespace XCore.PMS.WebAPI.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpGet]
-        public async Task<ActionResult> GetToken(string userName, string emailName)
+        public async Task<ActionResult> GetRegisterToken(string userName, string emailName)
         {
             var flag = await roleManager.RoleExistsAsync("admin");
             if (flag == false)
@@ -183,7 +183,7 @@ namespace XCore.PMS.WebAPI.Controllers
         /// <param name="username">用户名.</param>
         /// <param name="password">密码.</param>
         /// <returns></returns>
-        [AllowAnonymous] //允许匿名访问
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult> LoginAlpha(string username, string password)
         {
@@ -222,6 +222,70 @@ namespace XCore.PMS.WebAPI.Controllers
                 {
                     code = 999999,
                     msg = "用户名或密码错误"
+                });
+            }
+        }
+
+        /// <summary>
+        /// 获取重置密码的验证码.
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<ActionResult> GetResetToken(string emailName)
+        {
+            var user = await userManager.FindByEmailAsync(emailName);
+            if(user == null)
+            {
+                return Ok(new ReceiveObject<string>()
+                {
+                    code = 999999,
+                    msg = "该邮箱未注册"
+                });
+            }
+
+            // 使用GeneratePasswordResetTokenAsync获取令牌的默认字符串很长且复杂，但由于在配置文件中设置options.Tokens.PasswordResetTokenProvider为TokenOptions.DefaultEmailProvide，获得的字符串为简短的6位数字
+            string token = await userManager.GeneratePasswordResetTokenAsync(user);
+            return Ok(new ReceiveObject<string>()
+            {
+                code = 0,
+                msg = string.Format("往邮箱{0}，发送了令牌{1}", emailName, token)
+            });
+        }
+
+        /// <summary>
+        /// 重置密码.
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<ActionResult> ResetPassword(string emailName, string token, string newPassword)
+        {
+            var user = await userManager.FindByEmailAsync(emailName);
+            if(user == null)
+            {
+                return Ok(new ReceiveObject<string>()
+                {
+                    code = 999999,
+                    msg = "该邮箱未注册"
+                });
+            }
+
+            var result = await userManager.ResetPasswordAsync(user, token, newPassword);
+            if(result.Succeeded == false)
+            {
+                return Ok(new ReceiveObject<string>()
+                {
+                    code = 999999,
+                    msg = "密码重置失败"
+                });
+            }
+            else
+            {
+                return Ok(new ReceiveObject<string>()
+                {
+                    code = 0,
+                    msg = "成功"
                 });
             }
         }

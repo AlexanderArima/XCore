@@ -80,7 +80,7 @@
             <param name="tRoom"></param>
             <returns></returns>
         </member>
-        <member name="M:XCore.PMS.WebAPI.Controllers.UserController.GetToken(System.String,System.String)">
+        <member name="M:XCore.PMS.WebAPI.Controllers.UserController.GetRegisterToken(System.String,System.String)">
             <summary>
             获取注册用户的验证码.
             </summary>
@@ -98,6 +98,18 @@
             </summary>
             <param name="username">用户名.</param>
             <param name="password">密码.</param>
+            <returns></returns>
+        </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.UserController.GetResetToken(System.String)">
+            <summary>
+            获取重置密码的验证码.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.UserController.ResetPassword(System.String,System.String,System.String)">
+            <summary>
+            重置密码.
+            </summary>
             <returns></returns>
         </member>
         <member name="M:XCore.PMS.WebAPI.Controllers.UserController.Login(System.String,System.String)">
