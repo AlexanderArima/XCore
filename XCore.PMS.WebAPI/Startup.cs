@@ -99,21 +99,23 @@ namespace XCore.PMS.WebAPI
             });
 
             // 授权
+            var jwtOption = Configuration.GetSection("JWT").Get<JWTOptions>();
+            services.Configure<JWTOptions>(Configuration.GetSection("JWT"));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
-                var secretByte = Encoding.UTF8.GetBytes(Configuration["Authentication:secretKey"]);
+                var secretByte = Encoding.UTF8.GetBytes(jwtOption.SigningKey);
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
                     //只有配置的发布者donesoft.cn才会被接受
-                    ValidateIssuer = true,
-                    ValidIssuer = Configuration["Authentication:issuer"],
+                    ValidateIssuer = false,
 
                     //只有配置的使用者donesoft.cn才会被接受
-                    ValidateAudience = true,
-                    ValidAudience = Configuration["Authentication:audience"],
+                    ValidateAudience = false,
 
                     //验证token是否过期
                     ValidateLifetime = true,
+
+                    ValidateIssuerSigningKey = true,
 
                     //对密码进行加密
                     IssuerSigningKey = new SymmetricSecurityKey(secretByte)

@@ -120,6 +120,16 @@
             <param name="password">密码.</param>
             <returns></returns>
         </member>
+        <member name="P:XCore.PMS.WebAPI.Model.JWTOptions.SigningKey">
+            <summary>
+            密钥.
+            </summary>
+        </member>
+        <member name="P:XCore.PMS.WebAPI.Model.JWTOptions.ExpireSeconds">
+            <summary>
+            过期时间（单位是秒）.
+            </summary>
+        </member>
         <member name="P:XCore.PMS.WebAPI.Model.ReceiveList`1.code">
             <summary>
             代码，0表示请求成功

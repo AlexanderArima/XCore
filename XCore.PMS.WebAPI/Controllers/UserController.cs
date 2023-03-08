@@ -344,7 +344,7 @@ namespace XCore.PMS.WebAPI.Controllers
             };
 
             //2.3、创建signiture
-            var secretByte = Encoding.UTF8.GetBytes(_configuration["Authentication:secretKey"]);
+            var secretByte = Encoding.UTF8.GetBytes(_configuration.GetSection("JWT").Get<JWTOptions>().SigningKey);
             var signingKey = new SymmetricSecurityKey(secretByte);//对密码进行加密
             var signingCredentials = new SigningCredentials(signingKey, signingAlgorithm); //验证加密后的私钥
 

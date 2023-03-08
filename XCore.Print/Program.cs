@@ -2,6 +2,7 @@
 using XCore.Print.ORM;
 using XCore.Print.YZK.依赖注入;
 using XCore.Print.YZK.日志系统;
+using XCore.Print.YZK.用户角色;
 using XCore.Print.YZK.配置系统.读取命令行配置;
 using XCore.Print.YZK.配置系统.读取环境变量;
 
@@ -16,7 +17,8 @@ namespace XCore.Print
             // EnvironmentConfig.MainFunc();
             // BasicLogger.MainFunc();
             // Log4NetDemo.MainFunc02();
-            UseMySQL.MainFunc();
+            // UseMySQL.MainFunc();
+            JWTClass.Fun01();
             Console.ReadKey();
         }
     }
