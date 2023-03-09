@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using log4net.Core;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -22,9 +24,11 @@ namespace XCore.PMS.WebAPI.Controllers
         private readonly IConfiguration _configuration;
         private readonly UserManager<User> userManager;
         private readonly RoleManager<Role> roleManager;
+        private readonly ILogger<UserController> _logger;
 
-        public UserController(IConfiguration configuration, RoleManager<Role> roleManager, UserManager<User> userManager)
+        public UserController(ILogger<UserController> logger ,IConfiguration configuration, RoleManager<Role> roleManager, UserManager<User> userManager)
         {
+            this._logger = logger;
             this._configuration = configuration;
             this.roleManager = roleManager;
             this.userManager = userManager;
@@ -209,10 +213,24 @@ namespace XCore.PMS.WebAPI.Controllers
             var success = await userManager.CheckPasswordAsync(user, password);
             if (success)
             {
+                // 验证通过，返回令牌
+                var claims = new List<Claim>();
+                ClaimsIdentity claimsAlpha = new ClaimsIdentity();
+                claimsAlpha.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+                claimsAlpha.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
+                var roles = await userManager.GetRolesAsync(user);
+                foreach (var item in roles)
+                {
+                    claimsAlpha.AddClaim(new Claim(ClaimTypes.Role, item));
+                }
+
+                var jwtOption = _configuration.GetSection("JWT").Get<JWTOptions>();
+                string jwtToken = BuildToken(claimsAlpha, jwtOption);
                 return Ok(new ReceiveObject<string>()
                 {
                     code = 0,
-                    msg = "成功"
+                    msg = "成功",
+                    data = jwtToken
                 });
             }
             else
@@ -224,6 +242,44 @@ namespace XCore.PMS.WebAPI.Controllers
                     msg = "用户名或密码错误"
                 });
             }
+        }
+
+        /// <summary>
+        /// 创建Token.
+        /// </summary>
+        /// <param name="claims"></param>
+        /// <param name="jwtOption"></param>
+        /// <returns></returns>
+        private string BuildToken(ClaimsIdentity claims, JWTOptions jwtOption)
+        {
+            string key = jwtOption.SigningKey;
+            DateTime expires = DateTime.Now.AddSeconds(jwtOption.ExpireSeconds);
+            byte[] secBytes = Encoding.UTF8.GetBytes(key);
+            var secKey = new SymmetricSecurityKey(secBytes);
+            var credentials = new SigningCredentials(secKey, SecurityAlgorithms.HmacSha256Signature);
+            var tokenDescriptor = new JwtSecurityToken(claims: claims.Claims,
+                expires: expires, signingCredentials: credentials);
+            string jwt = new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
+            return jwt;
+        }
+
+        /// <summary>
+        /// 获得当前的用户信息.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public OkObjectResult GetUserInfo()
+        {
+            var user = this.User;
+            var id = user.FindFirst(m => m.Type == ClaimTypes.NameIdentifier);
+            var name = user.FindFirst(m => m.Type == ClaimTypes.Name);
+            var list_role = user.FindAll(m => m.Type == ClaimTypes.Role);
+            var result = string.Format("编号：{0}，用户名：{1}，角色：{2}", id, name, string.Join(',', list_role));
+            return Ok(new ReceiveObject<string>()
+            {
+                code = 0,
+                data = result
+            });
         }
 
         /// <summary>
@@ -367,5 +423,6 @@ namespace XCore.PMS.WebAPI.Controllers
                 data = tokenString
             });
         }
+
     }
 }

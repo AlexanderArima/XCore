@@ -98,11 +98,11 @@ namespace XCore.PMS.WebAPI
                 c.IncludeXmlComments(xmlPath);
             });
 
-            // 授权
-            var jwtOption = Configuration.GetSection("JWT").Get<JWTOptions>();
-            services.Configure<JWTOptions>(Configuration.GetSection("JWT"));
+            // 配置JWT
+            services.Configure<JWTOptions>(Configuration.GetSection("JWT"));    // 注册JWT对象
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
+                var jwtOption = Configuration.GetSection("JWT").Get<JWTOptions>();
                 var secretByte = Encoding.UTF8.GetBytes(jwtOption.SigningKey);
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
@@ -120,6 +120,13 @@ namespace XCore.PMS.WebAPI
                     //对密码进行加密
                     IssuerSigningKey = new SymmetricSecurityKey(secretByte)
                 };
+            });
+
+            // 注入Log4Net
+            services.AddLogging(m =>
+            {
+                // 默认的配置文件路径是在根目录，且文件名为log4net.config
+                m.AddLog4Net();
             });
         }
 

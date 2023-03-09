@@ -100,6 +100,20 @@
             <param name="password">密码.</param>
             <returns></returns>
         </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.UserController.BuildToken(System.Security.Claims.ClaimsIdentity,XCore.PMS.WebAPI.Model.JWTOptions)">
+            <summary>
+            创建Token.
+            </summary>
+            <param name="claims"></param>
+            <param name="jwtOption"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.UserController.GetUserInfo">
+            <summary>
+            获得当前的用户信息.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:XCore.PMS.WebAPI.Controllers.UserController.GetResetToken(System.String)">
             <summary>
             获取重置密码的验证码.
