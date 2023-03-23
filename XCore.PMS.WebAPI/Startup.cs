@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using XCore.PMS.WebAPI.Model;
 using XCore.PMS.WebAPI.Model_ORM;
+using XCore.PMS.WebAPI.Service;
 
 namespace XCore.PMS.WebAPI
 {
@@ -128,6 +129,10 @@ namespace XCore.PMS.WebAPI
                 // 默认的配置文件路径是在根目录，且文件名为log4net.config
                 m.AddLog4Net();
             });
+
+            // 注册自定义服务
+            services.AddHostedService<DemoBgService>(); 
+            services.AddHostedService<ExportCheckInService>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

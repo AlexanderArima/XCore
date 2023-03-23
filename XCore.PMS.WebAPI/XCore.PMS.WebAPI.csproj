@@ -36,5 +36,11 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Export\CheckIn\init.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 
 </Project>
