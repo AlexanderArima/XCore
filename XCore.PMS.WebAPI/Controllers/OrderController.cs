@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using XCore.PMS.WebAPI.Model;
 using XCore.PMS.WebAPI.Model_ORM;
 using XCore.PMS.WebAPI.VO.Order;
@@ -18,10 +19,12 @@ namespace XCore.PMS.WebAPI.Controllers
     public class OrderController : ControllerBase
     {
         private readonly db_hotelContext _context;
+        private readonly IMemoryCache _cache;
 
-        public OrderController(db_hotelContext context)
+        public OrderController(db_hotelContext context, IMemoryCache cache)
         {
             _context = context;
+            _cache = cache;
         }
 
         /// <summary>
@@ -33,38 +36,50 @@ namespace XCore.PMS.WebAPI.Controllers
         {
             try
             {
-                var list = await _context.TOrders.Where(m => m.Status == "1").ToListAsync();
-                var count = list.Count;
-                list = list.Skip((index) * size).Take(size).ToList();
-                List<AppointVO> list_appoint = new List<AppointVO>();
-                for (int i = 0; i < list.Count; i++)
-                {
-                    var item = list.ElementAt(i);
-                    AppointVO model = new AppointVO();
-                    model.Xm = item.Xm;
-                    model.Zjhm = item.Zjhm;
-                    model.Zjlx = item.Zjlx;
-                    model.Sex = Convert.ToInt32(item.Sex);
-                    model.Roomid = item.Roomid;
-                    model.Id = item.Id;
-                    model.Appointtime = item.Appointtime;
-                    model.Ywx = item.Ywx;
-                    model.Ywm = item.Ywm;
-                    model.Type = item.Type;
-                    model.Gj = item.Gj;
-                    list_appoint.Add(model);
-                }
+                // 获取或创建一个名为GetAppointList的缓存键值对
+                var item = await this._cache.GetOrCreateAsync("GetAppointList",
+                    async (e) => 
+                    {
+                        // 设置缓存过期时间的两种策略
+                        e.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30);    // 固定缓存（一到过期时间，缓存就过期）
+                        e.SlidingExpiration = TimeSpan.FromSeconds(10);    // 滑动缓存（在缓存期间如果命中，会续期）
 
-                ReceiveList<AppointVO> result = new ReceiveList<AppointVO>();
-                result.code = 0;
-                result.data = new ReceiveList<AppointVO>.Data()
-                {
-                    index = index,
-                    count = count,
-                    list = list_appoint,
-                };
+                        // 查询数据库
+                        var list = await _context.TOrders.Where(m => m.Status == "1").ToListAsync();
+                        var count = list.Count;
+                        list = list.Skip((index) * size).Take(size).ToList();
+                        List<AppointVO> list_appoint = new List<AppointVO>();
+                        for (int i = 0; i < list.Count; i++)
+                        {
+                            var item = list.ElementAt(i);
+                            AppointVO model = new AppointVO();
+                            model.Xm = item.Xm;
+                            model.Zjhm = item.Zjhm;
+                            model.Zjlx = item.Zjlx;
+                            model.Sex = Convert.ToInt32(item.Sex);
+                            model.Roomid = item.Roomid;
+                            model.Id = item.Id;
+                            model.Appointtime = item.Appointtime;
+                            model.Ywx = item.Ywx;
+                            model.Ywm = item.Ywm;
+                            model.Type = item.Type;
+                            model.Gj = item.Gj;
+                            list_appoint.Add(model);
+                        }
 
-                return result;
+                        ReceiveList<AppointVO> result = new ReceiveList<AppointVO>();
+                        result.code = 0;
+                        result.data = new ReceiveList<AppointVO>.Data()
+                        {
+                            index = index,
+                            count = count,
+                            list = list_appoint,
+                        };
+
+                        return result;
+                    });
+
+                return item;
             }
             catch(Exception ex)
             {
@@ -113,8 +128,10 @@ namespace XCore.PMS.WebAPI.Controllers
         /// 获取订单详情.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>缓存60s的数据</returns>
         [HttpGet]
+        [ResponseCache(Duration = 60)]
+        [AllowAnonymous]
         public async Task<ActionResult<ReceiveObject<TOrder>>> GetOrder(int id)
         {
             try

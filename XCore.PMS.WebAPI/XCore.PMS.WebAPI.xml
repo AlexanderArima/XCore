@@ -28,7 +28,7 @@
             获取订单详情.
             </summary>
             <param name="id"></param>
-            <returns></returns>
+            <returns>缓存60s的数据</returns>
         </member>
         <member name="M:XCore.PMS.WebAPI.Controllers.OrderController.UpdateOrder(XCore.PMS.WebAPI.Model_ORM.TOrder)">
             <summary>
