@@ -134,8 +134,15 @@ namespace XCore.PMS.WebAPI
             services.AddHostedService<DemoBgService>(); 
             services.AddHostedService<ExportCheckInService>();
 
-            // 设置内存缓存
+            // 注册内存缓存服务
             services.AddMemoryCache();
+
+            // 注册分布式缓存服务
+            services.AddStackExchangeRedisCache(option =>
+            {
+                option.Configuration = "localhost";    // 设置连接配置
+                option.InstanceName = "pms_";    // 设置缓存前缀
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

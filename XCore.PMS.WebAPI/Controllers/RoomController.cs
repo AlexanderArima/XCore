@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using XCore.PMS.WebAPI.Model;
 using XCore.PMS.WebAPI.Model_ORM;
 using XCore.PMS.WebAPI.VO.Room;
@@ -19,9 +20,12 @@ namespace XCore.PMS.WebAPI.Controllers
     {
         private readonly db_hotelContext _context;
 
-        public RoomController(db_hotelContext context)
+        private readonly IDistributedCache _distributedCache;
+
+        public RoomController(db_hotelContext context, IDistributedCache distributedCache)
         {
             _context = context;
+            _distributedCache = distributedCache;
         }
 
         // GET: api/Room
@@ -62,6 +66,40 @@ namespace XCore.PMS.WebAPI.Controllers
             model.data.Status = tRoom.Status;
             model.data.Number = tRoom.Number;
             return model;
+        }
+
+        /// <summary>
+        /// 获取房间总数.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult> GetCount()
+        {
+            ReceiveObject<string> model = new ReceiveObject<string>();
+            try
+            {
+                // 从缓存数据库中取值
+                var count = this._distributedCache.GetString("GetCount");
+                if(count == null)
+                {
+                    // 如果取不到值，则从数据库中查询，并写入到缓存中.
+                    var a = await _context.TRooms.CountAsync();
+                    count = a.ToString();
+                    var opt = new DistributedCacheEntryOptions();
+                    opt.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30);
+                    this._distributedCache.SetString("GetCount", count, opt);
+                }
+             
+                model.code = 0;
+                model.data = count;
+            }
+            catch (Exception ex)
+            {
+                model.code = 999999;
+                model.msg = "系统异常";
+            }
+
+            return Ok(model);
         }
 
         /// <summary>

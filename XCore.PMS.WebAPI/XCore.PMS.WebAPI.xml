@@ -73,6 +73,12 @@
             <param name="id">订单id</param>
             <returns></returns>
         </member>
+        <member name="M:XCore.PMS.WebAPI.Controllers.RoomController.GetCount">
+            <summary>
+            获取房间总数.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:XCore.PMS.WebAPI.Controllers.RoomController.UpdateRoom(XCore.PMS.WebAPI.VO.Room.UpdateRoomVO)">
             <summary>
             修改房间.
