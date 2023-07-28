@@ -1,10 +1,21 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+<link href="~/css/slide.css" rel="stylesheet" type="text/css" />
+
+<!-- 展示验证码 -->
+<div class="container">
+    <div class="main">
+        <div id="content" class="content">
+            <img id="backImage" src="" alt="">
+        </div>
+        <img id="smallImage" src="" alt="">
+        <div id="slider">
+            <div id="sliderBlock"></div>
+        </div>
+    </div>
+</div>
+
 <script src="~/lib/jquery/dist/jquery.js"></script>
-<script>
-    $.get("Create", function (data)
-    {
-        alert(data);
-    });
-</script>
+<script src="~/js/MySlide.js"></script>
+
