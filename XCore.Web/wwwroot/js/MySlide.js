@@ -5,6 +5,7 @@ var isMouseDown;
 var mouseDownStartX;
 
 // 鼠标移动距离
+var mouseMoveX;
 var mouseMoveLength;
 
 // 大图
