@@ -34,6 +34,11 @@ namespace XCore.WebAPI
         // 注册服务
         public void ConfigureServices(IServiceCollection services)
         {
+            // 加载邮箱配置，映射到类中
+            var notificationMetadata = Configuration.GetSection("NotificationMetadata").Get<NotificationMetadata>();
+            services.AddSingleton(notificationMetadata);
+            GlobalVariable.EmailModel = notificationMetadata;
+
             // 将项目中的控制器注册到容器中
             services.AddControllers();
 
