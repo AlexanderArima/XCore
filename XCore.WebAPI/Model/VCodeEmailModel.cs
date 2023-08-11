@@ -8,9 +8,9 @@ namespace XCore.WebAPI.Model
     public class VCodeEmailModel
     {
         /// <summary>
-        /// 令牌.
+        /// 邮箱地址.
         /// </summary>
-        public string id { get; set; }
+        public string emailAddress { get; set; }
 
         /// <summary>
         /// 验证码.

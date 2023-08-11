@@ -65,6 +65,9 @@ namespace XCore.WebAPI
             services.AddScoped<MyService>();
             services.AddScoped<LoginService>();
 
+            // ×¢²áÄÚ´æ»º´æ·þÎñ
+            services.AddMemoryCache();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 var secretByte = Encoding.UTF8.GetBytes(Configuration["Authentication:secretKey"]);

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace XCore.WebAPI.Model
 {
+    /// <summary>
+    /// 电子邮件相关的类.
+    /// </summary>
     public class EmailMessage
     {
         public MailboxAddress Sender { get; set; }
@@ -33,14 +36,20 @@ namespace XCore.WebAPI.Model
             return mimeMessage;
         }
 
-        public string Get()
+        /// <summary>
+        /// 发送邮件.
+        /// </summary>
+        /// <param name="distEmail">邮件接收者.</param>
+        /// <param name="code">验证码.</param>
+        /// <returns></returns>
+        public Tuple<bool, string> Send(string distEmail, string code)
         {
             var _notificationMetadata = GlobalVariable.EmailModel;
             EmailMessage message = new EmailMessage();
-            message.Sender = new MailboxAddress("Self", _notificationMetadata.Sender);
-            message.Reciever = new MailboxAddress("Self", _notificationMetadata.Reciever);
-            message.Subject = "Welcome";
-            message.Content = "Hello World!";
+            message.Sender = new MailboxAddress("Microsoft", _notificationMetadata.Sender);
+            message.Reciever = new MailboxAddress("", distEmail);
+            message.Subject = "验证邮件主题";
+            message.Content = "您好，验证码是：" + code + "，有效期为1分钟";
             var mimeMessage = CreateMimeMessageFromEmailMessage(message);
             using (SmtpClient smtpClient = new SmtpClient())
             {
@@ -52,7 +61,7 @@ namespace XCore.WebAPI.Model
                 smtpClient.Disconnect(true);
             }
 
-            return "Email sent successfully";
+            return new Tuple<bool, string>(true, string.Empty);
         }
     }
 }
