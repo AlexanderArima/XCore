@@ -61,7 +61,8 @@ namespace XCore.Web.Models
         /// <summary>
         /// 图片旋转
         /// </summary>
-        /// <param name="AngleValue"></param>
+        /// <param name="ImageOriginal">原图.</param>
+        /// <param name="AngleValue">旋转角度.</param>
         /// <returns></returns>
         public static Bitmap Rotate(Bitmap ImageOriginal, float AngleValue)
         {
