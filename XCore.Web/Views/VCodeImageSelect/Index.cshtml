@@ -1,5 +1,44 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
+<link href="~/css/image_select.css" rel="stylesheet" />
+<!-- 展示验证码 -->
+<div class="container">
+    <div class="main">
+        <div>
+            请选择所有的<img id="backTextImage" src="" alt="">
+        </div>
+        @for (int i = 1; i < 5; i++)
+        {
+            @if (i % 2 == 1)
+            {
+                <div style="float:left;">
+                    <div>
+                        <img id="backImage@(i)" + src="" class="img_check" checked="0">
+                    </div>
+                    <div id="div_icon@(i)">
+                        <img id="imgIcon@(i)" src="~/img/Select.png" />
+                    </div>
+                </div>
+                
+            }
+            else
+            {
+                <div>
+                    <div>
+                        <img id="backImage@(i)" + src="" class="img_check" checked="0">
+                    </div>
+                    <div id="div_icon@(i)">
+                        <img id="imgIcon@(i)" src="~/img/Select.png" />
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div style="position:relative;left:20px;">
+        <input type="button" value="提交" id="button_submit" />
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/image_select.js"></script>
