@@ -8,22 +8,34 @@ var _imageText = new String();
 // 令牌
 var _id;
 
-// 设置当前图片
-function setCurrentImageBase64(imageText, imageBase64, img_index) {
+/**
+ * 设置当前图片
+ * @param {any} imageText 描述文字的图片
+ * @param {any} imageBase64 图片列表
+ * @param {any} img_index 图片的序号
+ */
+function setCurrentImageBase64(imageText, imageBase64, img_index)
+{
     // 显示描述文字
     _imageText = 'data:image/webp;base64,' + imageText;
     document.getElementById('backTextImage').src = _imageText;
 
     // 显示图片
-    for (var i = 0; i < imageBase64.length; i++) {
+    for (var i = 0; i < imageBase64.length; i++)
+    {
         _imageBase64[i] = 'data:image/webp;base64,' + imageBase64[i];
         document.getElementById('backImage' + (i + 1)).src = _imageBase64[i];
         document.getElementById('backImage' + (i + 1)).attributes["val1"] = img_index[i];
     }
 }
 
-function check(x) {
-    $.get("Check?code=" + x + "&id=" + _id, function (data) {
+/**
+ * 验证方法
+ * @param {any} code 验证码
+ */
+function check(code)
+{
+    $.get("Check?code=" + code + "&id=" + _id, function (data) {
         var obj = JSON.parse(data);
         if (obj.code == "0") {
             alert("验证成功");
@@ -31,34 +43,44 @@ function check(x) {
         else {
             alert("验证失败");
         }
+
+        location.reload();
     });
 }
 
 window.onload = function () {
     $.get("Create", function (data) {
-        // 获取两张图片和令牌
+        // 获取图片和令牌
         var obj = JSON.parse(data);
         _id = obj.data.id;
+
         // console.log(obj.data.img_index.length);
         setCurrentImageBase64(obj.data.img_text, obj.data.img, obj.data.img_index);
     });
 
+    // 点击图片
     $(".img_check").click(function (event) {
         var id = event.currentTarget.id;
         var index = id.replace("backImage", "");
+
         // console.log(event.currentTarget.attributes["val1"]);
-        if (event.currentTarget.attributes["checked"].value == "0") {
+        if (event.currentTarget.attributes["checked"].value == "0")
+        {
+            // 选中状态
             event.currentTarget.attributes["checked"].value = "1";
             $("#imgIcon" + index).css("height", "25");
             $("#imgIcon" + index).css("width", "25");
         }
-        else {
+        else
+        {
+            // 取消选中状态
             event.currentTarget.attributes["checked"].value = "0";
             $("#imgIcon" + index).css("height", "1");
             $("#imgIcon" + index).css("width", "1");
         }
     });
 
+    // 提交按钮
     $("#button_submit").click(function () {
         var result = "";
         var v1 = $("#backImage1");
